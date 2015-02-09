@@ -69,12 +69,14 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         doneToolbar.sizeToFit()
         
         self.fpsInput.inputAccessoryView = doneToolbar
+        self.framesInput.inputAccessoryView = doneToolbar
         
     }
     
     func doneButtonAction()
     {
         self.fpsInput.resignFirstResponder()
+        self.framesInput.resignFirstResponder()
     }
     
     func textFieldShouldReturn(textField: UITextField!) -> Bool {
@@ -125,7 +127,10 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     }
     
     func stopTimer() {
+        
         updateTimerLabel()
+        enableFpsSelect()
+        
         timerRunning = false
         startToggle.setTitle("START", forState: .Normal)
         startToggle.setTitleColor(greenC, forState: .Normal)
@@ -158,12 +163,18 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     func enableFpsSelect() {
         fpsInput.enabled = true
         fpsInput.layer.borderColor = grayC.CGColor
+        fpsSegmented.setEnabled(true, forSegmentAtIndex: 0)
+        fpsSegmented.setEnabled(true, forSegmentAtIndex: 1)
+        fpsSegmented.setEnabled(true, forSegmentAtIndex: 2)
         fpsSegmented.tintColor = grayC
     }
     
     func disableFpsSelect() {
         fpsInput.enabled = false
         fpsInput.layer.borderColor = disabledGrayC.CGColor
+        fpsSegmented.setEnabled(false, forSegmentAtIndex: 0)
+        fpsSegmented.setEnabled(false, forSegmentAtIndex: 1)
+        fpsSegmented.setEnabled(false, forSegmentAtIndex: 2)
         fpsSegmented.tintColor = disabledGrayC
     }
     
@@ -194,18 +205,35 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     
     func convertToSeconds(timecode:String)-> Int {
         var splitTime = split(timecode) {$0 == ":"}
-        var seconds: Float = (splitTime[1] as NSString).floatValue
-        var minutes: Float = (splitTime[0] as NSString).floatValue
+        println(splitTime.count)
+        if splitTime.count == 1 {
+            var seconds = (secondsInput.text as NSString).floatValue
+            return Int(seconds * 100)
+        }
+        else if splitTime.count == 2 {
+            var seconds: Float = (splitTime[1] as NSString).floatValue
+            var minutes: Float = (splitTime[0] as NSString).floatValue
+            var totalSeconds = minutes * 60 + seconds
+            return Int(totalSeconds * 100)
+        }
+        else
+        {
+            return 0
+        }
+        //if timecode contains :
+        //var splitTime = split(timecode) {$0 == ":"}
+        //var seconds: Float = (splitTime[1] as NSString).floatValue
+        //var minutes: Float = (splitTime[0] as NSString).floatValue
         
-        println(minutes)
-        println(seconds)
+        //println(minutes)
+        //println(seconds)
         //if timecode contains :
         
         //else 
         //{
         //    seconds = (secondsInput.text as NSString).floatValue * 100
         //}
-        return 1
+        //return 1
     }
     
     @IBAction func fpsUpdated() {
@@ -221,6 +249,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         default:
             fpsSegmented.selectedSegmentIndex = UISegmentedControlNoSegment
         }
+        updateTimerLabel()
     }
     @IBAction func fpsQuickSelect(sender: UISegmentedControl, forEvent event: UIEvent) {
         switch fpsSegmented.selectedSegmentIndex
@@ -235,6 +264,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
             break; 
         }
         fpsInput.text = NSString(format:"%g",fps)
+        updateTimerLabel()
     }
     
     @IBAction func startButton() {
@@ -259,20 +289,42 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     }
     @IBAction func framesUpdated() {
         let frames = (framesInput.text as NSString).floatValue
+        if (frames == 0) {
+            framesInput.text = "0.00"
+        }
+        var secs:Float = frames / fps * 100
+        timeElapsed = (Int(secs))
+    }
+    @IBAction func framesEditing(sender: AnyObject) {
+        let frames = (framesInput.text as NSString).floatValue
         var secs:Float = frames / fps * 100
         secondsInput.text = formatSeconds(Int(secs))
     }
     
     @IBAction func secondsUpdated() {
-        convertToSeconds(secondsInput.text)
-        //let seconds = (secondsInput.text as NSString).integerValue
-        //println(seconds)
-        //framesInput.text = calulateFrames(seconds*100)
+        let seconds = convertToSeconds(secondsInput.text)
+        timeElapsed = (seconds)
+        secondsInput.text = formatSeconds(seconds)
     }
     
+    @IBAction func secondsEditing(sender: AnyObject) {
+        let seconds = convertToSeconds(secondsInput.text)
+        framesInput.text = calulateFrames(seconds)
+    }
+    
+    func prepareTextForShare()->String {
+        var textBody:String = ""
+        for key in keys {
+            textBody = textBody + formatSeconds(key)
+            textBody = textBody + "     "
+            textBody = textBody + calulateFrames(key)
+            textBody = textBody + "\n"
+        }
+        return textBody
+    }
     
     @IBAction func sendEmail(sender: AnyObject) {
-        let configuredMailComposeViewController = emailComposer.configuredMailComposeViewController()
+        let configuredMailComposeViewController = emailComposer.configuredMailComposeViewController(prepareTextForShare())
         if emailComposer.canSendMail() {
             presentViewController(configuredMailComposeViewController, animated: true, completion: nil)
         } else {
@@ -286,10 +338,11 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     
     
     @IBAction func sendMessage(sender: AnyObject) {
+        prepareTextForShare()
         // Make sure the device can send text messages
         if (messageComposer.canSendText()) {
             // Obtain a configured MFMessageComposeViewController
-            let messageComposeVC = messageComposer.configuredMessageComposeViewController()
+            let messageComposeVC = messageComposer.configuredMessageComposeViewController(prepareTextForShare())
             
             // Present the configured MFMessageComposeViewController instance
             // Note that the dismissal of the VC will be handled by the messageComposer instance,

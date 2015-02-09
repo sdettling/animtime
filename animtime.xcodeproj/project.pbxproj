@@ -69,14 +69,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		A0454C691A817843004FB0C3 /* ANIMTIME.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ANIMTIME.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0454C691A817843004FB0C3 /* animtime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = animtime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0454C6D1A817843004FB0C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A0454C6E1A817843004FB0C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0454C701A817843004FB0C3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A0454C731A817843004FB0C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A0454C751A817843004FB0C3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A0454C781A817843004FB0C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		A0454C7E1A817843004FB0C3 /* ANIMTIMETests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ANIMTIMETests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0454C7E1A817843004FB0C3 /* animtimeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = animtimeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0454C831A817843004FB0C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A0454C841A817843004FB0C3 /* ANIMTIMETests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIMTIMETests.swift; sourceTree = "<group>"; };
 		A0454C931A817B0E004FB0C3 /* OutlinedViews.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OutlinedViews.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,7 +86,6 @@
 		A0454CA51A817B0E004FB0C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A0454CA61A817B0E004FB0C3 /* OutlinedViewsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlinedViewsTests.swift; sourceTree = "<group>"; };
 		A0454CB31A817B34004FB0C3 /* Outlines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Outlines.swift; sourceTree = "<group>"; };
-		A082964A1A87B89F00DB1DE4 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		A082964C1A87C3C300DB1DE4 /* EmailComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailComposer.swift; sourceTree = "<group>"; };
 		A082964E1A87C6AE00DB1DE4 /* MessageComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageComposer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -128,7 +127,6 @@
 		A0454C601A817843004FB0C3 = {
 			isa = PBXGroup;
 			children = (
-				A082964A1A87B89F00DB1DE4 /* Social.framework */,
 				A0454C6B1A817843004FB0C3 /* ANIMTIME */,
 				A0454C811A817843004FB0C3 /* ANIMTIMETests */,
 				A0454C941A817B0E004FB0C3 /* OutlinedViews */,
@@ -140,8 +138,8 @@
 		A0454C6A1A817843004FB0C3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A0454C691A817843004FB0C3 /* ANIMTIME.app */,
-				A0454C7E1A817843004FB0C3 /* ANIMTIMETests.xctest */,
+				A0454C691A817843004FB0C3 /* animtime.app */,
+				A0454C7E1A817843004FB0C3 /* animtimeTests.xctest */,
 				A0454C931A817B0E004FB0C3 /* OutlinedViews.framework */,
 				A0454C9D1A817B0E004FB0C3 /* OutlinedViewsTests.xctest */,
 			);
@@ -237,9 +235,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		A0454C681A817843004FB0C3 /* ANIMTIME */ = {
+		A0454C681A817843004FB0C3 /* animtime */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A0454C881A817843004FB0C3 /* Build configuration list for PBXNativeTarget "ANIMTIME" */;
+			buildConfigurationList = A0454C881A817843004FB0C3 /* Build configuration list for PBXNativeTarget "animtime" */;
 			buildPhases = (
 				A0454C651A817843004FB0C3 /* Sources */,
 				A0454C661A817843004FB0C3 /* Frameworks */,
@@ -251,14 +249,14 @@
 			dependencies = (
 				A0454CA91A817B0E004FB0C3 /* PBXTargetDependency */,
 			);
-			name = ANIMTIME;
+			name = animtime;
 			productName = ANIMTIME;
-			productReference = A0454C691A817843004FB0C3 /* ANIMTIME.app */;
+			productReference = A0454C691A817843004FB0C3 /* animtime.app */;
 			productType = "com.apple.product-type.application";
 		};
-		A0454C7D1A817843004FB0C3 /* ANIMTIMETests */ = {
+		A0454C7D1A817843004FB0C3 /* animtimeTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A0454C8B1A817843004FB0C3 /* Build configuration list for PBXNativeTarget "ANIMTIMETests" */;
+			buildConfigurationList = A0454C8B1A817843004FB0C3 /* Build configuration list for PBXNativeTarget "animtimeTests" */;
 			buildPhases = (
 				A0454C7A1A817843004FB0C3 /* Sources */,
 				A0454C7B1A817843004FB0C3 /* Frameworks */,
@@ -269,9 +267,9 @@
 			dependencies = (
 				A0454C801A817843004FB0C3 /* PBXTargetDependency */,
 			);
-			name = ANIMTIMETests;
+			name = animtimeTests;
 			productName = ANIMTIMETests;
-			productReference = A0454C7E1A817843004FB0C3 /* ANIMTIMETests.xctest */;
+			productReference = A0454C7E1A817843004FB0C3 /* animtimeTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		A0454C921A817B0E004FB0C3 /* OutlinedViews */ = {
@@ -322,6 +320,7 @@
 				TargetAttributes = {
 					A0454C681A817843004FB0C3 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = S546X4KY9J;
 					};
 					A0454C7D1A817843004FB0C3 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -336,7 +335,7 @@
 					};
 				};
 			};
-			buildConfigurationList = A0454C641A817843004FB0C3 /* Build configuration list for PBXProject "ANIMTIME" */;
+			buildConfigurationList = A0454C641A817843004FB0C3 /* Build configuration list for PBXProject "animtime" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -349,8 +348,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A0454C681A817843004FB0C3 /* ANIMTIME */,
-				A0454C7D1A817843004FB0C3 /* ANIMTIMETests */,
+				A0454C681A817843004FB0C3 /* animtime */,
+				A0454C7D1A817843004FB0C3 /* animtimeTests */,
 				A0454C921A817B0E004FB0C3 /* OutlinedViews */,
 				A0454C9C1A817B0E004FB0C3 /* OutlinedViewsTests */,
 			);
@@ -432,7 +431,7 @@
 /* Begin PBXTargetDependency section */
 		A0454C801A817843004FB0C3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A0454C681A817843004FB0C3 /* ANIMTIME */;
+			target = A0454C681A817843004FB0C3 /* animtime */;
 			targetProxy = A0454C7F1A817843004FB0C3 /* PBXContainerItemProxy */;
 		};
 		A0454CA01A817B0E004FB0C3 /* PBXTargetDependency */ = {
@@ -442,7 +441,7 @@
 		};
 		A0454CA21A817B0E004FB0C3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A0454C681A817843004FB0C3 /* ANIMTIME */;
+			target = A0454C681A817843004FB0C3 /* animtime */;
 			targetProxy = A0454CA11A817B0E004FB0C3 /* PBXContainerItemProxy */;
 		};
 		A0454CA91A817B0E004FB0C3 /* PBXTargetDependency */ = {
@@ -509,6 +508,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = animtime;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -545,6 +545,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = animtime;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -555,9 +556,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = ANIMTIME/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = animtime;
 			};
 			name = Debug;
 		};
@@ -565,9 +567,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = ANIMTIME/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = animtime;
 			};
 			name = Release;
 		};
@@ -585,7 +588,7 @@
 				);
 				INFOPLIST_FILE = ANIMTIMETests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = animtimeTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ANIMTIME.app/ANIMTIME";
 			};
 			name = Debug;
@@ -600,7 +603,7 @@
 				);
 				INFOPLIST_FILE = ANIMTIMETests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = animtimeTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ANIMTIME.app/ANIMTIME";
 			};
 			name = Release;
@@ -683,7 +686,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A0454C641A817843004FB0C3 /* Build configuration list for PBXProject "ANIMTIME" */ = {
+		A0454C641A817843004FB0C3 /* Build configuration list for PBXProject "animtime" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A0454C861A817843004FB0C3 /* Debug */,
@@ -692,7 +695,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A0454C881A817843004FB0C3 /* Build configuration list for PBXNativeTarget "ANIMTIME" */ = {
+		A0454C881A817843004FB0C3 /* Build configuration list for PBXNativeTarget "animtime" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A0454C891A817843004FB0C3 /* Debug */,
@@ -701,7 +704,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A0454C8B1A817843004FB0C3 /* Build configuration list for PBXNativeTarget "ANIMTIMETests" */ = {
+		A0454C8B1A817843004FB0C3 /* Build configuration list for PBXNativeTarget "animtimeTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A0454C8C1A817843004FB0C3 /* Debug */,

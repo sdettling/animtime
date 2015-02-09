@@ -15,13 +15,12 @@ class EmailComposer: NSObject, MFMailComposeViewControllerDelegate {
         return MFMailComposeViewController.canSendMail()
     }
     
-    func configuredMailComposeViewController() -> MFMailComposeViewController {
+    func configuredMailComposeViewController(emailBody:String) -> MFMailComposeViewController {
         let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate = self
         
-        mailComposerVC.setToRecipients(["someone@somewhere.com"])
-        mailComposerVC.setSubject("Sending you an in-app e-mail...")
-        mailComposerVC.setMessageBody("Sending e-mail in-app is not so bad!", isHTML: false)
+        mailComposerVC.setSubject("ANIMTIME Key List")
+        mailComposerVC.setMessageBody(emailBody, isHTML: false)
         
         return mailComposerVC
     }

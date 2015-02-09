@@ -8,7 +8,7 @@
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="ANIMTIME" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="animtime" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -20,7 +20,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tVR-ao-H4F" customClass="OutlineView" customModule="OutlinedViews">
                                 <rect key="frame" x="63" y="140" width="288" height="80"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0.00" textAlignment="right" clearsOnBeginEditing="YES" minimumFontSize="12" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="YR7-Qa-H1j" customClass="OutlineTextField" customModule="OutlinedViews">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0.00" textAlignment="right" clearsOnBeginEditing="YES" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="YR7-Qa-H1j" customClass="OutlineTextField" customModule="OutlinedViews">
                                         <rect key="frame" x="0.0" y="5" width="256" height="76"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="256" id="Jpg-xR-tJ9"/>
@@ -28,7 +28,7 @@
                                         </constraints>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" name="AvenirNextCondensed-Regular" family="Avenir Next Condensed" pointSize="68"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" keyboardAppearance="alert" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad" keyboardAppearance="alert" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                 <real key="value" value="0.0"/>
@@ -38,6 +38,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
+                                            <action selector="framesEditing:" destination="vXZ-lx-hvc" eventType="editingChanged" id="Rrw-9F-E3X"/>
                                             <action selector="framesUpdated" destination="vXZ-lx-hvc" eventType="editingDidEnd" id="CE5-Hh-S76"/>
                                         </connections>
                                     </textField>
@@ -80,8 +81,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R7B-tp-Gkf" customClass="OutlineButton" customModule="OutlinedViews">
-                                <rect key="frame" x="278" y="278" width="130" height="90"/>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R7B-tp-Gkf" customClass="OutlineButton" customModule="OutlinedViews">
+                                <rect key="frame" x="218" y="240" width="180" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="130" id="uHn-Fl-UE8"/>
                                     <constraint firstAttribute="height" constant="90" id="zgN-Jc-wBy"/>
@@ -221,7 +222,7 @@
                                 </connections>
                             </textField>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="black" dataMode="prototypes" style="plain" separatorStyle="none" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ri0-Wf-oo4">
-                                <rect key="frame" x="16" y="350" width="382" height="386"/>
+                                <rect key="frame" x="16" y="350" width="382" height="346"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="368" id="c0f-hu-LZY"/>
@@ -274,19 +275,29 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="secondsEditing:" destination="vXZ-lx-hvc" eventType="editingChanged" id="G3x-vd-mat"/>
                                     <action selector="secondsUpdated" destination="vXZ-lx-hvc" eventType="editingDidEnd" id="Out-Ez-4fH"/>
                                 </connections>
                             </textField>
-                            <view alpha="0.0" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JIe-Bq-HAN">
-                                <rect key="frame" x="164" y="184" width="44" height="38"/>
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JIe-Bq-HAN">
+                                <rect key="frame" x="206" y="220" width="2" height="2"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="2" id="2wg-dY-OGG"/>
                                     <constraint firstAttribute="height" constant="2" id="Msf-er-Hg7"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="irQ-QR-OIQ">
-                                <rect key="frame" x="28" y="88" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JKc-lh-brk">
+                                <rect key="frame" x="258" y="698" width="30" height="30"/>
+                                <state key="normal" title="Text">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="sendMessage:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="5qv-1W-fgk"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="irQ-QR-OIQ">
+                                <rect key="frame" x="118" y="698" width="38" height="30"/>
                                 <state key="normal" title="Email">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -294,18 +305,10 @@
                                     <action selector="sendEmail:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="q6C-0m-ytO"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JKc-lh-brk">
-                                <rect key="frame" x="138" y="88" width="46" height="30"/>
-                                <state key="normal" title="text">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="sendMessage:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="5qv-1W-fgk"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.19687105429292928" green="0.19687105429292928" blue="0.19687105429292928" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="JKc-lh-brk" secondAttribute="bottom" constant="8" id="0Dx-ZC-9Yx"/>
                             <constraint firstItem="JIe-Bq-HAN" firstAttribute="top" secondItem="PAs-Gk-Daa" secondAttribute="top" constant="-20" id="0rQ-km-t66"/>
                             <constraint firstItem="cIP-LU-joc" firstAttribute="width" secondItem="oGX-1b-8aN" secondAttribute="width" constant="-20" id="2g9-u6-G99"/>
                             <constraint firstItem="JIe-Bq-HAN" firstAttribute="leading" secondItem="PAs-Gk-Daa" secondAttribute="trailing" constant="10" id="4ve-d8-l26"/>
@@ -320,9 +323,11 @@
                             <constraint firstItem="oGX-1b-8aN" firstAttribute="top" secondItem="cIP-LU-joc" secondAttribute="top" id="K8O-93-iIm"/>
                             <constraint firstItem="o3u-ov-u9w" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="10" id="KwA-50-VsY"/>
                             <constraint firstItem="XAr-O2-aC8" firstAttribute="leading" secondItem="YR7-Qa-H1j" secondAttribute="trailing" constant="2" id="M0K-3z-ATS"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="ri0-Wf-oo4" secondAttribute="bottom" id="MiC-ob-RPl"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="ri0-Wf-oo4" secondAttribute="bottom" constant="40" id="MiC-ob-RPl"/>
                             <constraint firstItem="oGX-1b-8aN" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="60" id="Mpf-5a-1SQ"/>
                             <constraint firstItem="P28-Nk-uhk" firstAttribute="leading" secondItem="Ma6-fW-RqA" secondAttribute="trailing" constant="24" id="NMk-S3-75S"/>
+                            <constraint firstItem="JKc-lh-brk" firstAttribute="leading" secondItem="JIe-Bq-HAN" secondAttribute="trailing" constant="50" id="Q1E-Vi-2yl"/>
+                            <constraint firstItem="JIe-Bq-HAN" firstAttribute="leading" secondItem="irQ-QR-OIQ" secondAttribute="trailing" constant="50" id="Syh-hI-Jb6"/>
                             <constraint firstAttribute="trailingMargin" secondItem="R7B-tp-Gkf" secondAttribute="trailing" id="TYD-EC-GzC"/>
                             <constraint firstItem="PAs-Gk-Daa" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="VOp-oa-CJ7"/>
                             <constraint firstItem="P28-Nk-uhk" firstAttribute="top" secondItem="Ma6-fW-RqA" secondAttribute="top" constant="5" id="VeR-q4-Sck"/>
@@ -334,6 +339,7 @@
                             <constraint firstItem="ri0-Wf-oo4" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="g1d-rv-k1V"/>
                             <constraint firstAttribute="centerX" secondItem="PAs-Gk-Daa" secondAttribute="centerX" constant="80" id="ggj-tL-2EH"/>
                             <constraint firstItem="tVR-ao-H4F" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="120" id="jAB-gw-2he"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="irQ-QR-OIQ" secondAttribute="bottom" constant="8" id="jku-O5-ojx"/>
                             <constraint firstItem="cIP-LU-joc" firstAttribute="top" secondItem="oGX-1b-8aN" secondAttribute="top" id="kFu-ZE-tRp"/>
                             <constraint firstItem="R7B-tp-Gkf" firstAttribute="leading" secondItem="JIe-Bq-HAN" secondAttribute="trailing" constant="10" id="kXi-L2-xfM"/>
                             <constraint firstAttribute="centerX" secondItem="tVR-ao-H4F" secondAttribute="centerX" id="ksN-Bo-RJZ"/>
@@ -364,8 +370,8 @@
                                 <exclude reference="mhR-3h-CeC"/>
                                 <exclude reference="rYc-FM-EY2"/>
                                 <exclude reference="77g-ra-0xC"/>
-                                <exclude reference="av4-VX-A6y"/>
                                 <exclude reference="YbP-AP-E8k"/>
+                                <exclude reference="av4-VX-A6y"/>
                             </mask>
                         </variation>
                     </view>

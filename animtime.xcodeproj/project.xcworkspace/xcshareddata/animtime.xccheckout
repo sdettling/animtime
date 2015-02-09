@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>774ADD42-3085-42A2-B2DB-D87D9B6A51A1</string>
+	<key>IDESourceControlProjectName</key>
+	<string>animtime</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>1DB1E191167CC78493A46E014E346905D6B83233</key>
+		<string>github.com:sdettling/animtime.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>animtime.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>1DB1E191167CC78493A46E014E346905D6B83233</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:sdettling/animtime.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>1DB1E191167CC78493A46E014E346905D6B83233</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>1DB1E191167CC78493A46E014E346905D6B83233</string>
+			<key>IDESourceControlWCCName</key>
+			<string>animtime</string>
+		</dict>
+	</array>
+</dict>
+</plist>
