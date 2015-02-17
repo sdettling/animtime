@@ -38,6 +38,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
+                                            <action selector="framesEditStart:" destination="vXZ-lx-hvc" eventType="editingDidBegin" id="eYB-10-ISl"/>
                                             <action selector="framesEditing:" destination="vXZ-lx-hvc" eventType="editingChanged" id="Rrw-9F-E3X"/>
                                             <action selector="framesUpdated" destination="vXZ-lx-hvc" eventType="editingDidEnd" id="CE5-Hh-S76"/>
                                         </connections>
@@ -218,6 +219,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="fpsEditStart:" destination="vXZ-lx-hvc" eventType="editingDidBegin" id="e8Q-ZQ-rML"/>
                                     <action selector="fpsUpdated" destination="vXZ-lx-hvc" eventType="editingDidEnd" id="P4u-Sn-mWe"/>
                                 </connections>
                             </textField>
@@ -276,6 +278,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="secondsEditing:" destination="vXZ-lx-hvc" eventType="editingChanged" id="G3x-vd-mat"/>
+                                    <action selector="secondsEditingStart:" destination="vXZ-lx-hvc" eventType="editingDidBegin" id="z7M-iN-uFn"/>
                                     <action selector="secondsUpdated" destination="vXZ-lx-hvc" eventType="editingDidEnd" id="Out-Ez-4fH"/>
                                 </connections>
                             </textField>
@@ -305,6 +308,12 @@
                                     <action selector="sendEmail:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="q6C-0m-ytO"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HOLD TO" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x4r-OF-ELk">
+                                <rect key="frame" x="272" y="248" width="75" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.19687105429292928" green="0.19687105429292928" blue="0.19687105429292928" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -326,6 +335,7 @@
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="ri0-Wf-oo4" secondAttribute="bottom" constant="40" id="MiC-ob-RPl"/>
                             <constraint firstItem="oGX-1b-8aN" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="60" id="Mpf-5a-1SQ"/>
                             <constraint firstItem="P28-Nk-uhk" firstAttribute="leading" secondItem="Ma6-fW-RqA" secondAttribute="trailing" constant="24" id="NMk-S3-75S"/>
+                            <constraint firstItem="TAP-cr-YGj" firstAttribute="top" secondItem="x4r-OF-ELk" secondAttribute="top" constant="-8" id="PMN-aT-9KB"/>
                             <constraint firstItem="JKc-lh-brk" firstAttribute="leading" secondItem="JIe-Bq-HAN" secondAttribute="trailing" constant="50" id="Q1E-Vi-2yl"/>
                             <constraint firstItem="JIe-Bq-HAN" firstAttribute="leading" secondItem="irQ-QR-OIQ" secondAttribute="trailing" constant="50" id="Syh-hI-Jb6"/>
                             <constraint firstAttribute="trailingMargin" secondItem="R7B-tp-Gkf" secondAttribute="trailing" id="TYD-EC-GzC"/>
@@ -349,6 +359,7 @@
                             <constraint firstItem="cIP-LU-joc" firstAttribute="height" secondItem="oGX-1b-8aN" secondAttribute="height" id="rYc-FM-EY2"/>
                             <constraint firstItem="Ma6-fW-RqA" firstAttribute="leading" secondItem="o3u-ov-u9w" secondAttribute="trailing" constant="10" id="sCJ-A7-IHN"/>
                             <constraint firstItem="oGX-1b-8aN" firstAttribute="leading" secondItem="cIP-LU-joc" secondAttribute="leading" id="tWr-yW-GF3"/>
+                            <constraint firstItem="TAP-cr-YGj" firstAttribute="leading" secondItem="x4r-OF-ELk" secondAttribute="trailing" constant="-129" id="vU2-cw-YJa"/>
                             <constraint firstAttribute="centerX" secondItem="o3u-ov-u9w" secondAttribute="centerX" constant="107" id="xPa-a2-mC3"/>
                             <constraint firstItem="JIe-Bq-HAN" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="200" id="xV4-OA-lKC"/>
                             <constraint firstItem="Ma6-fW-RqA" firstAttribute="top" secondItem="o3u-ov-u9w" secondAttribute="bottom" constant="4" id="y1i-B9-42Q"/>

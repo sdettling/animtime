@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A0454C681A817843004FB0C3"
-               BuildableName = "ANIMTIME.app"
-               BlueprintName = "ANIMTIME"
-               ReferencedContainer = "container:ANIMTIME.xcodeproj">
+               BuildableName = "animtime.app"
+               BlueprintName = "animtime"
+               ReferencedContainer = "container:animtime.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A0454C7D1A817843004FB0C3"
-               BuildableName = "ANIMTIMETests.xctest"
-               BlueprintName = "ANIMTIMETests"
-               ReferencedContainer = "container:ANIMTIME.xcodeproj">
+               BuildableName = "animtimeTests.xctest"
+               BlueprintName = "animtimeTests"
+               ReferencedContainer = "container:animtime.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -45,7 +45,7 @@
                BlueprintIdentifier = "A0454C9C1A817B0E004FB0C3"
                BuildableName = "OutlinedViewsTests.xctest"
                BlueprintName = "OutlinedViewsTests"
-               ReferencedContainer = "container:ANIMTIME.xcodeproj">
+               ReferencedContainer = "container:animtime.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -61,9 +61,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A0454C7D1A817843004FB0C3"
-               BuildableName = "ANIMTIMETests.xctest"
-               BlueprintName = "ANIMTIMETests"
-               ReferencedContainer = "container:ANIMTIME.xcodeproj">
+               BuildableName = "animtimeTests.xctest"
+               BlueprintName = "animtimeTests"
+               ReferencedContainer = "container:animtime.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -73,7 +73,7 @@
                BlueprintIdentifier = "A0454C9C1A817B0E004FB0C3"
                BuildableName = "OutlinedViewsTests.xctest"
                BlueprintName = "OutlinedViewsTests"
-               ReferencedContainer = "container:ANIMTIME.xcodeproj">
+               ReferencedContainer = "container:animtime.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -81,9 +81,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A0454C681A817843004FB0C3"
-            BuildableName = "ANIMTIME.app"
-            BlueprintName = "ANIMTIME"
-            ReferencedContainer = "container:ANIMTIME.xcodeproj">
+            BuildableName = "animtime.app"
+            BlueprintName = "animtime"
+            ReferencedContainer = "container:animtime.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -100,9 +100,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A0454C681A817843004FB0C3"
-            BuildableName = "ANIMTIME.app"
-            BlueprintName = "ANIMTIME"
-            ReferencedContainer = "container:ANIMTIME.xcodeproj">
+            BuildableName = "animtime.app"
+            BlueprintName = "animtime"
+            ReferencedContainer = "container:animtime.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -118,9 +118,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A0454C681A817843004FB0C3"
-            BuildableName = "ANIMTIME.app"
-            BlueprintName = "ANIMTIME"
-            ReferencedContainer = "container:ANIMTIME.xcodeproj">
+            BuildableName = "animtime.app"
+            BlueprintName = "animtime"
+            ReferencedContainer = "container:animtime.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

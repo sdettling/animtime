@@ -6,6 +6,19 @@
 //  Copyright (c) 2015 Stephen Dettling. All rights reserved.
 //
 
+//When already reset (all 0s) disable reset button
+    //enable when timer starts, or f/s is greater than 0, or keys exist
+
+//While editing
+    //disable start, reset button
+
+//While timer running
+    //disable editing
+
+//While keys exist
+    //disable editing
+
+
 import UIKit
 import MessageUI
 
@@ -19,6 +32,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     var timerStarted: Bool = false
     var fps:Float = 24.0
     var keys: [Int] = []
+    var hasKeys: Bool = false
     let greenC : UIColor = UIColor.greenColor()
     let redC : UIColor = UIColor.redColor()
     let blueC : UIColor = UIColor.blueColor()
@@ -104,8 +118,35 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         
     }
     
+    func disableEditing() {
+        secondsInput.enabled = false
+        framesInput.enabled = false
+    }
+    
+    func enableEditing() {
+        secondsInput.enabled = true
+        framesInput.enabled = true
+    }
+    
+    func disableStart() {
+        startToggle.enabled = false
+    }
+    
+    func enableStart() {
+        startToggle.enabled = true
+    }
+    
+    func disableReset() {
+        resetButton.enabled = false
+    }
+    
+    func enableReset() {
+        resetButton.enabled = true
+    }
+    
     func startTimer() {
         timerRunning = true
+        disableEditing()
         
         if !timerStarted {
             let myTimer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "advanceTime", userInfo: nil, repeats: true)
@@ -127,7 +168,10 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     }
     
     func stopTimer() {
-        
+        if !hasKeys {
+            enableEditing()
+            enableFpsSelect()
+        }
         updateTimerLabel()
         enableFpsSelect()
         
@@ -201,6 +245,10 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         timeElapsed = 0
         secondsInput.text = "00:00.00"
         framesInput.text = "0000.00"
+        enableEditing()
+        enableFpsSelect()
+        enableStart()
+        disableReset()
     }
     
     func convertToSeconds(timecode:String)-> Int {
@@ -220,24 +268,15 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         {
             return 0
         }
-        //if timecode contains :
-        //var splitTime = split(timecode) {$0 == ":"}
-        //var seconds: Float = (splitTime[1] as NSString).floatValue
-        //var minutes: Float = (splitTime[0] as NSString).floatValue
-        
-        //println(minutes)
-        //println(seconds)
-        //if timecode contains :
-        
-        //else 
-        //{
-        //    seconds = (secondsInput.text as NSString).floatValue * 100
-        //}
-        //return 1
     }
     
     @IBAction func fpsUpdated() {
+        let prevFps = fps
         fps = (fpsInput.text as NSString).floatValue
+        if fps == 0 {
+            fps = prevFps
+            fpsInput.text = NSString(format:"%.2f",fps)
+        }
         switch fps
         {
         case 24:
@@ -250,6 +289,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
             fpsSegmented.selectedSegmentIndex = UISegmentedControlNoSegment
         }
         updateTimerLabel()
+        enableStart()
     }
     @IBAction func fpsQuickSelect(sender: UISegmentedControl, forEvent event: UIEvent) {
         switch fpsSegmented.selectedSegmentIndex
@@ -277,6 +317,11 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     }
     
     @IBAction func intervalButton() {
+        if !hasKeys {
+            hasKeys = true
+            disableEditing()
+            disableFpsSelect()
+        }
         keys.append(timeElapsed)
         updateKeysList()
     }
@@ -284,6 +329,9 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     @IBAction func resetGesture(sender: AnyObject) {
         if sender.state == UIGestureRecognizerState.Began
         {
+            keys = []
+            updateKeysList()
+            hasKeys = false
             resetTimer()
         }
     }
@@ -294,6 +342,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         }
         var secs:Float = frames / fps * 100
         timeElapsed = (Int(secs))
+        enableStart()
     }
     @IBAction func framesEditing(sender: AnyObject) {
         let frames = (framesInput.text as NSString).floatValue
@@ -305,6 +354,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         let seconds = convertToSeconds(secondsInput.text)
         timeElapsed = (seconds)
         secondsInput.text = formatSeconds(seconds)
+        enableStart()
     }
     
     @IBAction func secondsEditing(sender: AnyObject) {
@@ -356,5 +406,14 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         
     }
     
+    @IBAction func fpsEditStart(sender: AnyObject) {
+        disableStart()
+    }
+    @IBAction func secondsEditingStart(sender: AnyObject) {
+        disableStart()
+    }
+    @IBAction func framesEditStart(sender: AnyObject) {
+        disableStart()
+    }
     
 }
