@@ -108,8 +108,12 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         cell.contentView.backgroundColor = UIColor.grayColor()
         cell.textLabel?.textColor = UIColor.whiteColor()
         cell.detailTextLabel?.textColor = UIColor.whiteColor()
-        cell.textLabel?.text = formatSeconds(keys[indexPath.row])
-        cell.detailTextLabel?.text = calulateFrames(keys[indexPath.row])
+        var timeSinceLast = 0
+        if indexPath.row > 0 {
+            timeSinceLast = keys[indexPath.row] - keys[(indexPath.row - 1)]
+        }
+        cell.textLabel?.text = String(indexPath.row) + "    " + formatSeconds(keys[indexPath.row])
+        cell.detailTextLabel?.text = formatSeconds(timeSinceLast) + "    " + calulateFrames(keys[indexPath.row])
         
         return cell
     }
