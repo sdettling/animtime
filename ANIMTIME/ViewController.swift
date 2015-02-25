@@ -362,8 +362,32 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     }
     
     @IBAction func secondsEditing(sender: AnyObject) {
+        let secondsValue = (secondsInput.text as NSString).floatValue
+        if secondsValue >= 60 && secondsValue < 100 {
+            secondsInput.text = convertToTimecode(secondsValue)
+        }
+        else if secondsValue >= 100 {
+            //secondsInput.text = insertColon(secondsInput.text)
+        }
+        
         let seconds = convertToSeconds(secondsInput.text)
         framesInput.text = calulateFrames(seconds)
+    }
+    
+    //func insertColon(secondsText:String)->String {
+        //  100 1:00 1:00.0 10:00.00
+        //let stringCount = strFraction.length - 2
+        //strFraction = strFraction.substringWithRange(NSRange(location: stringCount, length: 2))
+        //return timeString
+    //}
+    
+    func convertToTimecode(time:Float)->String {
+        let minutes = UInt32(time / 60)
+        let seconds = UInt32(UInt32(time) - minutes * 60)
+        let strMinutes = String(minutes)
+        let strSeconds = seconds > 9 ? String(seconds):"0" + String(seconds)
+        let timeString = "\(strMinutes):\(strSeconds)"
+        return timeString
     }
     
     func prepareTextForShare()->String {
