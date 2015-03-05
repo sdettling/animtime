@@ -6,19 +6,6 @@
 //  Copyright (c) 2015 Stephen Dettling. All rights reserved.
 //
 
-//When already reset (all 0s) disable reset button
-    //enable when timer starts, or f/s is greater than 0, or keys exist
-
-//While editing
-    //disable start, reset button
-
-//While timer running
-    //disable editing
-
-//While keys exist
-    //disable editing
-
-
 import UIKit
 import MessageUI
 
@@ -27,22 +14,19 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     let emailComposer = EmailComposer()
     let messageComposer = MessageComposer()
     
+    var startTime = NSDate.timeIntervalSinceReferenceDate()
     var timeElapsed:Int = 0
     var timerRunning: Bool = false
     var timerStarted: Bool = false
     var fps:Float = 24.0
     var keys: [Int] = []
     var hasKeys: Bool = false
-    let greenC : UIColor = UIColor.greenColor()
-    let redC : UIColor = UIColor.redColor()
-    let blueC : UIColor = UIColor.blueColor()
+    let greenC : UIColor = UIColor(red: 0, green: 165/255, blue: 80/255, alpha: 1.0)
+    let yellowC : UIColor = UIColor(red: 242/255, green: 201/255, blue: 47/255, alpha: 1.0)
+    let blueC : UIColor = UIColor(red: 86/255, green: 91/255, blue: 168/255, alpha: 1.0)
+    let redC : UIColor = UIColor(red: 237/255, green: 28/255, blue: 36/255, alpha: 1.0)
     let grayC : UIColor = UIColor.grayColor()
     let disabledGrayC : UIColor = UIColor.darkGrayColor()
-    
-    @IBOutlet var fpsSegmented: UISegmentedControl!
-    
-    //@IBOutlet weak var secondsDisplay: UILabel!
-    //@IBOutlet weak var framesDisplay: UILabel!
     
     @IBOutlet weak var startToggle: UIButton!
     @IBOutlet weak var resetButton: UIButton!
@@ -67,6 +51,8 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         super.didReceiveMemoryWarning()
     }
     
+// Add done button to number keyboard
+    
     func addDoneButtonOnKeyboard()
     {
         var doneToolbar: UIToolbar = UIToolbar(frame: CGRectMake(0, 0, 320, 50))
@@ -83,6 +69,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         doneToolbar.sizeToFit()
         
         self.fpsInput.inputAccessoryView = doneToolbar
+        self.secondsInput.inputAccessoryView = doneToolbar
         self.framesInput.inputAccessoryView = doneToolbar
         
     }
@@ -90,6 +77,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     func doneButtonAction()
     {
         self.fpsInput.resignFirstResponder()
+        self.secondsInput.resignFirstResponder()
         self.framesInput.resignFirstResponder()
     }
     
@@ -97,6 +85,8 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         self.view.endEditing(true);
         return false;
     }
+    
+// Setup table view for keys
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return keys.count
@@ -121,6 +111,8 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
     }
+    
+    
     
     func disableEditing() {
         secondsInput.enabled = false
@@ -148,11 +140,14 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         resetButton.enabled = true
     }
     
+    
+    
     func startTimer() {
         timerRunning = true
         disableEditing()
         
         if !timerStarted {
+            startTime = NSDate.timeIntervalSinceReferenceDate()
             let myTimer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "advanceTime", userInfo: nil, repeats: true)
             NSRunLoop.currentRunLoop().addTimer(myTimer, forMode: NSRunLoopCommonModes)
             timerStarted = true
@@ -211,19 +206,11 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     func enableFpsSelect() {
         fpsInput.enabled = true
         fpsInput.layer.borderColor = grayC.CGColor
-        fpsSegmented.setEnabled(true, forSegmentAtIndex: 0)
-        fpsSegmented.setEnabled(true, forSegmentAtIndex: 1)
-        fpsSegmented.setEnabled(true, forSegmentAtIndex: 2)
-        fpsSegmented.tintColor = grayC
     }
     
     func disableFpsSelect() {
         fpsInput.enabled = false
         fpsInput.layer.borderColor = disabledGrayC.CGColor
-        fpsSegmented.setEnabled(false, forSegmentAtIndex: 0)
-        fpsSegmented.setEnabled(false, forSegmentAtIndex: 1)
-        fpsSegmented.setEnabled(false, forSegmentAtIndex: 2)
-        fpsSegmented.tintColor = disabledGrayC
     }
     
     func calulateFrames(secondsElapsed:Int)-> String {
@@ -281,35 +268,10 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
             fps = prevFps
             fpsInput.text = NSString(format:"%.2f",fps)
         }
-        switch fps
-        {
-        case 24:
-            fpsSegmented.selectedSegmentIndex = 0
-        case 30:
-            fpsSegmented.selectedSegmentIndex = 1
-        case 25:
-            fpsSegmented.selectedSegmentIndex = 2
-        default:
-            fpsSegmented.selectedSegmentIndex = UISegmentedControlNoSegment
-        }
         updateTimerLabel()
         enableStart()
     }
-    @IBAction func fpsQuickSelect(sender: UISegmentedControl, forEvent event: UIEvent) {
-        switch fpsSegmented.selectedSegmentIndex
-        {
-        case 0:
-            fps = 24
-        case 1:
-            fps = 30
-        case 2:
-            fps = 25
-        default:
-            break; 
-        }
-        fpsInput.text = NSString(format:"%g",fps)
-        updateTimerLabel()
-    }
+    
     
     @IBAction func startButton() {
         if timerRunning {
@@ -326,6 +288,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
             disableEditing()
             disableFpsSelect()
         }
+        println(NSDate.timeIntervalSinceReferenceDate() - startTime)
         keys.append(timeElapsed)
         updateKeysList()
     }
