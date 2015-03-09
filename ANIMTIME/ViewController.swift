@@ -21,10 +21,13 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     var fps:Float = 24.0
     var keys: [Int] = []
     var hasKeys: Bool = false
-    let greenC : UIColor = UIColor(red: 0, green: 165/255, blue: 80/255, alpha: 1.0)
-    let yellowC : UIColor = UIColor(red: 242/255, green: 201/255, blue: 47/255, alpha: 1.0)
-    let blueC : UIColor = UIColor(red: 86/255, green: 91/255, blue: 168/255, alpha: 1.0)
+    let greenC : UIColor = UIColor(red: 0, green: 166/255, blue: 81/255, alpha: 1.0)
+    let yellowC : UIColor = UIColor(red: 243/255, green: 202/255, blue: 47/255, alpha: 1.0)
+    let blueC : UIColor = UIColor(red: 87/255, green: 91/255, blue: 168/255, alpha: 1.0)
     let redC : UIColor = UIColor(red: 237/255, green: 28/255, blue: 36/255, alpha: 1.0)
+    let keysBorderC : UIColor = UIColor(red: 147/255, green: 149/255, blue: 152/255, alpha: 1.0)
+    let keysGrayC : UIColor = UIColor(red: 65/255, green: 64/255, blue: 66/255, alpha: 1.0)
+    let whiteText : UIColor = UIColor(red: 241/255, green: 242/255, blue: 242/255, alpha: 1.0)
     let grayC : UIColor = UIColor.grayColor()
     let disabledGrayC : UIColor = UIColor.darkGrayColor()
     
@@ -43,6 +46,9 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         self.fpsInput.delegate = self
         self.secondsInput.delegate = self
         self.framesInput.delegate = self
+        self.keyTable.backgroundColor = keysGrayC
+        self.keyTable.allowsSelection = false
+        self.keyTable.rowHeight = 40
         self.keyTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         self.addDoneButtonOnKeyboard()
     }
@@ -95,23 +101,20 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell:UITableViewCell = keyTable.dequeueReusableCellWithIdentifier("cell") as UITableViewCell
         cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
-        cell.contentView.backgroundColor = UIColor.grayColor()
-        cell.textLabel?.textColor = UIColor.whiteColor()
-        cell.detailTextLabel?.textColor = UIColor.whiteColor()
+        cell.contentView.backgroundColor = keysGrayC
+        cell.textLabel?.textColor = whiteText
+        cell.detailTextLabel?.textColor = whiteText
+        cell.textLabel?.font = UIFont(name: "AvenirNextCondensed-Regular", size: 24)
+        cell.detailTextLabel?.font = UIFont(name: "AvenirNextCondensed-Regular", size: 24)
         var timeSinceLast = 0
         if indexPath.row > 0 {
             timeSinceLast = keys[indexPath.row] - keys[(indexPath.row - 1)]
         }
-        cell.textLabel?.text = String(indexPath.row) + "    " + formatSeconds(keys[indexPath.row])
-        cell.detailTextLabel?.text = formatSeconds(timeSinceLast) + "    " + calulateFrames(keys[indexPath.row])
+        cell.textLabel?.text = String(indexPath.row + 1) + "  ●  " + formatSeconds(keys[indexPath.row])
+        cell.detailTextLabel?.text = calulateFrames(keys[indexPath.row])
         
         return cell
     }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-    }
-    
     
     
     func disableEditing() {
