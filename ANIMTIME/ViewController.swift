@@ -19,7 +19,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     var timerRunning: Bool = false
     var timerStarted: Bool = false
     var fps:Float = 24.0
-    var keys: [Int] = []
+    var keys: [Float] = []
     var hasKeys: Bool = false
     let greenC : UIColor = UIColor(red: 0, green: 166/255, blue: 81/255, alpha: 1.0)
     let yellowC : UIColor = UIColor(red: 243/255, green: 202/255, blue: 47/255, alpha: 1.0)
@@ -107,9 +107,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         cell.textLabel?.font = UIFont(name: "AvenirNextCondensed-Regular", size: 24)
         cell.detailTextLabel?.font = UIFont(name: "AvenirNextCondensed-Regular", size: 24)
         var timeSinceLast = 0
-        if indexPath.row > 0 {
-            timeSinceLast = keys[indexPath.row] - keys[(indexPath.row - 1)]
-        }
         cell.textLabel?.text = String(indexPath.row + 1) + "  ●  " + formatSeconds(keys[indexPath.row])
         cell.detailTextLabel?.text = calulateFrames(keys[indexPath.row])
         
@@ -198,6 +195,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     }
     
     func updateTimerLabel() {
+        let timeElapsed:Float = Float(NSDate.timeIntervalSinceReferenceDate() - startTime)
         secondsInput.text = formatSeconds(timeElapsed)
         framesInput.text = calulateFrames(timeElapsed)
     }
@@ -216,22 +214,21 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         fpsInput.layer.borderColor = disabledGrayC.CGColor
     }
     
-    func calulateFrames(secondsElapsed:Int)-> String {
-        let time:Float = Float(Float(secondsElapsed)/100)
-        let framesEquivalent:Float = time * fps
+    func calulateFrames(secondsElapsed:Float)-> String {
+        //let time:Float = Float(Float(secondsElapsed)/100)
+        let framesEquivalent:Float = secondsElapsed * fps
         return NSString(format:"%.2f",framesEquivalent)
     }
     
-    func formatSeconds(secondsElapsed:Int)-> String {
-        let time:Float = Float(Float(secondsElapsed)/100)
+    func formatSeconds(secondsElapsed:Float)-> String {
+        let time:Float = secondsElapsed
         let minutes = UInt32(time / 60)
         let seconds = UInt32(UInt32(time) - minutes * 60)
         let strMinutes = minutes > 9 ? String(minutes):"0" + String(minutes)
         let strSeconds = seconds > 9 ? String(seconds):"0" + String(seconds)
-        var strFraction = NSString(format:"%.2f",time)
-        let stringCount = strFraction.length - 2
-        strFraction = strFraction.substringWithRange(NSRange(location: stringCount, length: 2))
-        let timeString = "\(strMinutes):\(strSeconds).\(strFraction)"
+        let fraction = Int(round(secondsElapsed * fps % fps))
+        let strFraction = fraction > 9 ? String(fraction):"0" + String(fraction)
+        let timeString = "\(strMinutes):\(strSeconds):\(strFraction)"
         return timeString
     }
     
@@ -292,7 +289,9 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
             disableFpsSelect()
         }
         println(NSDate.timeIntervalSinceReferenceDate() - startTime)
-        keys.append(timeElapsed)
+        let timediff:Float = Float(NSDate.timeIntervalSinceReferenceDate() - startTime)
+        
+        keys.append(timediff)
         updateKeysList()
     }
     
@@ -317,13 +316,13 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     @IBAction func framesEditing(sender: AnyObject) {
         let frames = (framesInput.text as NSString).floatValue
         var secs:Float = frames / fps * 100
-        secondsInput.text = formatSeconds(Int(secs))
+        //secondsInput.text = formatSeconds(Int(secs))
     }
     
     @IBAction func secondsUpdated() {
         let seconds = convertToSeconds(secondsInput.text)
         timeElapsed = (seconds)
-        secondsInput.text = formatSeconds(seconds)
+        //secondsInput.text = formatSeconds(seconds)
         enableStart()
     }
     
@@ -337,7 +336,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         }
         
         let seconds = convertToSeconds(secondsInput.text)
-        framesInput.text = calulateFrames(seconds)
+        //framesInput.text = calulateFrames(seconds)
     }
     
     //func insertColon(secondsText:String)->String {

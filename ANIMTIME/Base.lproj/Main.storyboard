@@ -59,11 +59,13 @@
                             </view>
                             <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R7B-tp-Gkf" customClass="OutlineButton" customModule="OutlinedViews">
                                 <rect key="frame" x="218" y="186" width="180" height="80"/>
+                                <color key="backgroundColor" red="0.17254901959999999" green="0.16862745100000001" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="130" id="uHn-Fl-UE8"/>
                                     <constraint firstAttribute="height" constant="80" id="zgN-Jc-wBy"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNextCondensed-Regular" family="Avenir Next Condensed" pointSize="40"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="KEY">
                                     <color key="titleColor" red="0.3411764705882353" green="0.35686274509803922" blue="0.6588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
