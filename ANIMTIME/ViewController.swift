@@ -18,6 +18,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     var timeElapsed:Int = 0
     var timerRunning: Bool = false
     var timerStarted: Bool = false
+    var stoppedTime = NSDate.timeIntervalSinceReferenceDate()
     var fps:Float = 24.0
     var keys: [Float] = []
     var hasKeys: Bool = false
@@ -30,6 +31,10 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     let whiteText : UIColor = UIColor(red: 241/255, green: 242/255, blue: 242/255, alpha: 1.0)
     let grayC : UIColor = UIColor.grayColor()
     let disabledGrayC : UIColor = UIColor.darkGrayColor()
+    
+    @IBOutlet var resetHoldLabel: UILabel!
+    @IBOutlet var resetDot: UIView!
+    @IBOutlet var startDot: UIView!
     
     @IBOutlet weak var startToggle: UIButton!
     @IBOutlet weak var resetButton: UIButton!
@@ -145,9 +150,19 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     func startTimer() {
         timerRunning = true
         disableEditing()
+    
+        if stoppedTime == startTime {
+            startTime = NSDate.timeIntervalSinceReferenceDate()
+            stoppedTime = startTime
+        }
+        else {
+            startTime = startTime + (NSDate.timeIntervalSinceReferenceDate() - stoppedTime)
+            println(NSDate.timeIntervalSinceReferenceDate() - stoppedTime)
+            println(startTime)
+        }
         
         if !timerStarted {
-            startTime = NSDate.timeIntervalSinceReferenceDate()
+            println(startTime)
             let myTimer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "advanceTime", userInfo: nil, repeats: true)
             NSRunLoop.currentRunLoop().addTimer(myTimer, forMode: NSRunLoopCommonModes)
             timerStarted = true
@@ -156,8 +171,12 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         startToggle.setTitle("STOP", forState: .Normal)
         startToggle.setTitleColor(redC, forState: .Normal)
         startToggle.layer.borderColor = redC.CGColor
+        startDot.backgroundColor = redC
         
+        resetDot.backgroundColor = blueC
+        resetHoldLabel.layer.zPosition = 0;
         resetButton.layer.zPosition = 0;
+        resetDot.layer.zPosition = 2;
         keyButton.layer.zPosition = 1;
         resetButton.alpha = 0;
         keyButton.alpha = 1;
@@ -174,12 +193,19 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         updateTimerLabel()
         enableFpsSelect()
         
+        stoppedTime = NSDate.timeIntervalSinceReferenceDate()
+        println(stoppedTime)
+        
         timerRunning = false
         startToggle.setTitle("START", forState: .Normal)
         startToggle.setTitleColor(greenC, forState: .Normal)
         startToggle.layer.borderColor = greenC.CGColor
+        startDot.backgroundColor = greenC
         
+        resetDot.backgroundColor = yellowC
+        resetHoldLabel.layer.zPosition = 3;
         resetButton.layer.zPosition = 1;
+        resetDot.layer.zPosition = 2;
         keyButton.layer.zPosition = 0;
         resetButton.alpha = 1;
         keyButton.alpha = 0;
@@ -234,12 +260,14 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     
     func resetTimer() {
         timeElapsed = 0
-        secondsInput.text = "00:00.00"
-        framesInput.text = "0000.00"
+        stoppedTime = 0
+        secondsInput.text = "00:00:00"
+        framesInput.text = "0.00"
         enableEditing()
         enableFpsSelect()
         enableStart()
         disableReset()
+        stoppedTime = startTime
     }
     
     func convertToSeconds(timecode:String)-> Int {
@@ -302,6 +330,11 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
             updateKeysList()
             hasKeys = false
             resetTimer()
+            println("start")
+        }
+        if sender.state == UIGestureRecognizerState.Ended
+        {
+            println("end")
         }
     }
     @IBAction func framesUpdated() {

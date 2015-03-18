@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -81,7 +81,7 @@
                                         <real key="value" value="2"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="10"/>
+                                        <real key="value" value="6"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <variation key="default">
@@ -632,7 +632,10 @@
                         <outlet property="keyButton" destination="R7B-tp-Gkf" id="soD-ZM-evy"/>
                         <outlet property="keyTable" destination="ri0-Wf-oo4" id="AEA-pg-nlQ"/>
                         <outlet property="resetButton" destination="TAP-cr-YGj" id="Jpk-OH-9J4"/>
+                        <outlet property="resetDot" destination="2VC-2j-SdS" id="Icx-Nu-okZ"/>
+                        <outlet property="resetHoldLabel" destination="x4r-OF-ELk" id="L4r-Cx-Cab"/>
                         <outlet property="secondsInput" destination="cIP-LU-joc" id="FoL-O3-8go"/>
+                        <outlet property="startDot" destination="Zfe-xe-l24" id="ysq-hf-aGJ"/>
                         <outlet property="startToggle" destination="PAs-Gk-Daa" id="wB8-HE-wfD"/>
                     </connections>
                 </viewController>
