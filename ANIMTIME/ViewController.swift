@@ -149,6 +149,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     
     func startTimer() {
         timerRunning = true
+        enableReset()
         disableEditing()
     
         if stoppedTime == startTime {
@@ -221,13 +222,21 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     }
     
     func updateTimerLabel() {
-        let timeElapsed:Float = Float(NSDate.timeIntervalSinceReferenceDate() - startTime)
-        secondsInput.text = formatSeconds(timeElapsed)
-        framesInput.text = calulateFrames(timeElapsed)
+        let calculatedTime:Float = Float(NSDate.timeIntervalSinceReferenceDate() - startTime)
+        secondsInput.text = formatSeconds(calculatedTime)
+        framesInput.text = calulateFrames(calculatedTime)
     }
     
     func updateKeysList() {
         self.keyTable.reloadData()
+        let numberOfSections = keyTable.numberOfSections()
+        let numberOfRows = keyTable.numberOfRowsInSection(numberOfSections-1)
+        
+        if numberOfRows > 0 {
+            println(numberOfSections)
+            let indexPath = NSIndexPath(forRow: numberOfRows-1, inSection: (numberOfSections-1))
+            keyTable.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
+        }
     }
     
     func enableFpsSelect() {
@@ -294,9 +303,25 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         fps = (fpsInput.text as NSString).floatValue
         if fps == 0 {
             fps = prevFps
-            fpsInput.text = NSString(format:"%.2f",fps)
+            if fps % 1 == 0 {
+                fpsInput.text = NSString(format:"%g",fps)
+            }
+            else {
+                fpsInput.text = NSString(format:"%.2f",fps)
+            }
         }
-        updateTimerLabel()
+        //updateTimerLabel()
+        
+        let totalSeconds = (framesInput.text as NSString).floatValue / fps
+        
+        stoppedTime = NSDate.timeIntervalSinceReferenceDate()
+        startTime = stoppedTime - NSTimeInterval(totalSeconds)
+        
+        println(startTime)
+        
+        secondsInput.text = formatSeconds(totalSeconds)
+        //framesInput.text = calulateFrames(totalSeconds)
+        
         enableStart()
     }
     
@@ -326,7 +351,8 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     @IBAction func resetGesture(sender: AnyObject) {
         if sender.state == UIGestureRecognizerState.Began
         {
-            keys = []
+            //keys = []
+            keys.removeAll()
             updateKeysList()
             hasKeys = false
             resetTimer()
@@ -342,42 +368,114 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         if (frames == 0) {
             framesInput.text = "0.00"
         }
-        var secs:Float = frames / fps * 100
-        timeElapsed = (Int(secs))
+        var secs:Float = frames / fps
+        
+        stoppedTime = NSDate.timeIntervalSinceReferenceDate()
+        startTime = stoppedTime - NSTimeInterval(secs)
+        
+        ///// set timer to start at entered time
+        
+        //var secs:Float = frames / fps
+        //timeElapsed = secs
         enableStart()
     }
     @IBAction func framesEditing(sender: AnyObject) {
         let frames = (framesInput.text as NSString).floatValue
-        var secs:Float = frames / fps * 100
-        //secondsInput.text = formatSeconds(Int(secs))
+        var secs:Float = frames / fps
+        secondsInput.text = formatSeconds(secs)
     }
     
     @IBAction func secondsUpdated() {
-        let seconds = convertToSeconds(secondsInput.text)
-        timeElapsed = (seconds)
+        var secondsText = secondsInput.text as NSString
+        var timeNumbers = secondsText.stringByReplacingOccurrencesOfString(":", withString: "") as NSString
+        var timeInt = timeNumbers.integerValue
+        let chars:Int = timeNumbers.length
+        var min:Float = 0
+        var sec:Float = 0
+        var fr:Float = 0
+        if chars < 3 {
+            fr = timeNumbers.floatValue
+        }
+        else if chars > 2 && chars < 5 {
+            let rangeL = chars - 2
+            let secChar = timeNumbers.substringWithRange(NSRange(location: 0, length: rangeL)) as NSString
+            let frChar = timeNumbers.substringWithRange(NSRange(location: rangeL, length: 2)) as NSString
+            sec = secChar.floatValue
+            fr = frChar.floatValue
+        }
+        else if chars > 4 && chars < 7 {
+            let rangeL = chars - 4
+            let minChar = timeNumbers.substringWithRange(NSRange(location: 0, length: rangeL)) as NSString
+            let secChar = timeNumbers.substringWithRange(NSRange(location: rangeL, length: 2)) as NSString
+            let frChar = timeNumbers.substringWithRange(NSRange(location: rangeL+2, length: 2)) as NSString
+            min = minChar.floatValue
+            sec = secChar.floatValue
+            fr = frChar.floatValue
+        }
+        
+        let totalSeconds = (fr/fps)+sec+(min*60)
+        
+        println(min)
+        println(sec)
+        println(fr)
+
+        secondsInput.text = formatSeconds(totalSeconds)
+        framesInput.text = calulateFrames(totalSeconds)
+        
+        
+        stoppedTime = NSDate.timeIntervalSinceReferenceDate()
+        startTime = stoppedTime - NSTimeInterval(totalSeconds)
+        
+        //update frames accordingly
+        
+        
+        //let seconds = convertToSeconds(secondsInput.text)
+        
+        ///// set timer to start at entered time
+        
+        //timeElapsed = (seconds)
         //secondsInput.text = formatSeconds(seconds)
         enableStart()
     }
     
     @IBAction func secondsEditing(sender: AnyObject) {
-        let secondsValue = (secondsInput.text as NSString).floatValue
-        if secondsValue >= 60 && secondsValue < 100 {
-            secondsInput.text = convertToTimecode(secondsValue)
-        }
-        else if secondsValue >= 100 {
-            //secondsInput.text = insertColon(secondsInput.text)
-        }
+        //let secondsValue = (secondsInput.text as NSString).integerValue
+        var secondsText = secondsInput.text as NSString
+        var timeNumbers = secondsText.stringByReplacingOccurrencesOfString(":", withString: "") as NSString
         
-        let seconds = convertToSeconds(secondsInput.text)
-        //framesInput.text = calulateFrames(seconds)
+        let chars:Int = timeNumbers.length
+        
+        if chars < 3 {
+            secondsText = timeNumbers
+            secondsInput.text = secondsText
+        }
+        else if chars > 2 && chars < 5 {
+            let rangeL = chars - 2
+            let secChar = timeNumbers.substringWithRange(NSRange(location: 0, length: rangeL))
+            let frChar = timeNumbers.substringWithRange(NSRange(location: rangeL, length: 2))
+            secondsText = secChar+":"+frChar
+            secondsInput.text = secondsText
+        }
+        else if chars > 4 && chars < 7 {
+            let rangeL = chars - 4
+            let minChar = timeNumbers.substringWithRange(NSRange(location: 0, length: rangeL))
+            let secChar = timeNumbers.substringWithRange(NSRange(location: rangeL, length: 2))
+            let frChar = timeNumbers.substringWithRange(NSRange(location: rangeL+2, length: 2))
+            secondsText = minChar+":"+secChar+":"+frChar
+            secondsInput.text = secondsText
+            if chars == 6 {
+                self.secondsInput.resignFirstResponder()
+            }
+        }
     }
     
-    //func insertColon(secondsText:String)->String {
-        //  100 1:00 1:00.0 10:00.00
-        //let stringCount = strFraction.length - 2
-        //strFraction = strFraction.substringWithRange(NSRange(location: stringCount, length: 2))
-        //return timeString
-    //}
+    func convertToFrames(minutes:Int, seconds:Int, frames:Int) {
+        var calculatedframes:Float = 0
+        
+        calculatedframes = (Float(minutes * 60) * fps) + (Float(seconds) * fps) + Float(frames)
+        
+        println(calculatedframes)
+    }
     
     func convertToTimecode(time:Float)->String {
         let minutes = UInt32(time / 60)

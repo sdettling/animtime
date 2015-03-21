@@ -190,15 +190,16 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oGX-1b-8aN" customClass="OutlineView" customModule="OutlinedViews">
                                 <rect key="frame" x="216" y="34" width="182" height="52"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="00:00:00" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cIP-LU-joc" customClass="OutlineTextField" customModule="OutlinedViews">
-                                        <rect key="frame" x="36" y="5" width="110" height="42"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="00:00:00" textAlignment="right" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cIP-LU-joc" customClass="OutlineTextField" customModule="OutlinedViews">
+                                        <rect key="frame" x="39" y="5" width="105" height="42"/>
+                                        <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="42" id="1vT-rq-Ph9"/>
-                                            <constraint firstAttribute="width" constant="110" id="xK7-1Q-TCF"/>
+                                            <constraint firstAttribute="width" constant="105" id="xK7-1Q-TCF"/>
                                         </constraints>
                                         <color key="textColor" red="0.94509803920000002" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="AvenirNextCondensed-Regular" family="Avenir Next Condensed" pointSize="30"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad" keyboardAppearance="alert" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" keyboardAppearance="alert" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                 <real key="value" value="0.0"/>
@@ -279,6 +280,7 @@
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="center" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="24" textAlignment="center" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="o3u-ov-u9w" customClass="OutlineTextField" customModule="OutlinedViews">
                                         <rect key="frame" x="38" y="5" width="50" height="42"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="Ahk-4V-4k2"/>
                                             <constraint firstAttribute="height" constant="42" id="wW9-rf-CQ9"/>
@@ -405,6 +407,7 @@
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0.00" textAlignment="right" clearsOnBeginEditing="YES" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="YR7-Qa-H1j" customClass="OutlineTextField" customModule="OutlinedViews">
                                         <rect key="frame" x="20" y="0.0" width="326" height="76"/>
+                                        <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="256" id="Jpg-xR-tJ9"/>
                                             <constraint firstAttribute="height" constant="76" id="QMK-f5-RxN"/>
@@ -512,6 +515,7 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.17254901960784313" green="0.16862745098039217" blue="0.17647058823529413" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="JKc-lh-brk" secondAttribute="bottom" id="0Dx-ZC-9Yx"/>
                             <constraint firstItem="ri0-Wf-oo4" firstAttribute="top" secondItem="h3c-CT-yYP" secondAttribute="bottom" id="0V4-BH-nya"/>
