@@ -52,6 +52,21 @@
                                     <constraint firstAttribute="height" constant="1" id="p21-ao-MTh"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3oy-qn-ZKs">
+                                <rect key="frame" x="-4" y="0.0" width="422" height="20"/>
+                                <color key="backgroundColor" red="0.42745098040000001" green="0.43137254899999999" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="17" id="Aeu-uf-Oj9"/>
+                                    <constraint firstAttribute="width" constant="289" id="O7F-eX-Rl3"/>
+                                    <constraint firstAttribute="height" constant="20" id="YKZ-Ek-5fR"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Aeu-uf-Oj9"/>
+                                        <exclude reference="O7F-eX-Rl3"/>
+                                    </mask>
+                                </variation>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xM0-MB-FCl">
                                 <rect key="frame" x="-4" y="282" width="422" height="412"/>
                                 <color key="backgroundColor" red="0.25855278980278984" green="0.25353234728234736" blue="0.26357323232323238" alpha="1" colorSpace="calibratedRGB"/>
@@ -526,6 +541,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="tVR-ao-H4F" secondAttribute="trailing" id="2RH-2u-v8v"/>
                             <constraint firstItem="tVR-ao-H4F" firstAttribute="bottom" secondItem="khK-aW-N7y" secondAttribute="bottom" constant="148" id="2T6-Kc-Imu"/>
                             <constraint firstItem="khK-aW-N7y" firstAttribute="top" secondItem="BRV-P4-LsQ" secondAttribute="bottom" constant="-30" id="2pT-8I-b3O"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="3oy-qn-ZKs" secondAttribute="trailing" constant="-20" id="3J2-ai-1Nv"/>
                             <constraint firstItem="Fu3-sc-XeQ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-20" id="3m2-bP-UKx"/>
                             <constraint firstItem="JIe-Bq-HAN" firstAttribute="leading" secondItem="PAs-Gk-Daa" secondAttribute="trailing" constant="10" id="4ve-d8-l26"/>
                             <constraint firstItem="PAs-Gk-Daa" firstAttribute="top" secondItem="tVR-ao-H4F" secondAttribute="bottom" constant="14" id="5fw-LR-Rrc"/>
@@ -595,9 +611,11 @@
                             <constraint firstAttribute="trailingMargin" secondItem="xM0-MB-FCl" secondAttribute="trailing" constant="-20" id="mga-Fb-brx"/>
                             <constraint firstItem="jlp-aM-Xjf" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-20" id="oCV-eU-iao"/>
                             <constraint firstItem="TAP-cr-YGj" firstAttribute="leading" secondItem="JIe-Bq-HAN" secondAttribute="trailing" constant="10" id="pfS-6h-BPx"/>
+                            <constraint firstItem="3oy-qn-ZKs" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="-20" id="qkC-zf-9pM"/>
                             <constraint firstAttribute="centerX" secondItem="PAs-Gk-Daa" secondAttribute="centerX" constant="180" id="r1x-KV-SHQ"/>
                             <constraint firstItem="tVR-ao-H4F" firstAttribute="top" secondItem="khK-aW-N7y" secondAttribute="bottom" constant="14" id="rf5-sD-K8t"/>
                             <constraint firstItem="xgW-m1-Kmf" firstAttribute="leading" secondItem="oGX-1b-8aN" secondAttribute="trailing" constant="-45" id="s3w-gv-JgB"/>
+                            <constraint firstItem="3oy-qn-ZKs" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-20" id="uXb-rO-xKB"/>
                             <constraint firstItem="oGX-1b-8aN" firstAttribute="leading" secondItem="JIe-Bq-HAN" secondAttribute="leading" constant="10" id="uys-n5-Wzk"/>
                             <constraint firstItem="TAP-cr-YGj" firstAttribute="leading" secondItem="x4r-OF-ELk" secondAttribute="trailing" constant="-129" id="vU2-cw-YJa"/>
                             <constraint firstItem="irQ-QR-OIQ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-20" id="w9s-sD-QgG"/>
@@ -650,7 +668,7 @@
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="416" y="438"/>
+            <point key="canvasLocation" x="416" y="455"/>
         </scene>
     </scenes>
 </document>
