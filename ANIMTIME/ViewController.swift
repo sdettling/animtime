@@ -24,7 +24,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     var hasKeys: Bool = false
     let greenC : UIColor = UIColor(red: 0, green: 166/255, blue: 81/255, alpha: 1.0)
     let yellowC : UIColor = UIColor(red: 243/255, green: 202/255, blue: 47/255, alpha: 1.0)
-    let blueC : UIColor = UIColor(red: 87/255, green: 91/255, blue: 168/255, alpha: 1.0)
+    let blueC : UIColor = UIColor(red: 98/255, green: 89/255, blue: 215/255, alpha: 1.0)
     let redC : UIColor = UIColor(red: 237/255, green: 28/255, blue: 36/255, alpha: 1.0)
     let keysBorderC : UIColor = UIColor(red: 147/255, green: 149/255, blue: 152/255, alpha: 1.0)
     let keysGrayC : UIColor = UIColor(red: 65/255, green: 64/255, blue: 66/255, alpha: 1.0)
@@ -112,7 +112,16 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         cell.textLabel?.font = UIFont(name: "AvenirNextCondensed-Regular", size: 24)
         cell.detailTextLabel?.font = UIFont(name: "AvenirNextCondensed-Regular", size: 24)
         var timeSinceLast = 0
-        cell.textLabel?.text = String(indexPath.row + 1) + "  ●  " + formatSeconds(keys[indexPath.row])
+        var keyNum = indexPath.row + 1
+        var strKeyNum = String(keyNum)
+        if keyNum < 10 {
+            strKeyNum = "\u{2000}\u{2000}" + String(keyNum)
+        }
+        else if keyNum < 100 {
+            strKeyNum = "\u{2000}" + String(keyNum)
+        }
+        
+        cell.textLabel?.text = strKeyNum + "  ●  " + formatSeconds(keys[indexPath.row])
         cell.detailTextLabel?.text = calulateFrames(keys[indexPath.row])
         
         return cell
@@ -149,7 +158,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     
     func startTimer() {
         timerRunning = true
-        enableReset()
+        //enableReset()
         disableEditing()
     
         if stoppedTime == startTime {
@@ -189,10 +198,10 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     func stopTimer() {
         if !hasKeys {
             enableEditing()
-            enableFpsSelect()
+            //enableFpsSelect()
         }
         updateTimerLabel()
-        enableFpsSelect()
+        //enableFpsSelect()
         
         stoppedTime = NSDate.timeIntervalSinceReferenceDate()
         println(stoppedTime)
@@ -217,12 +226,17 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
             timeElapsed += 1
             if ( timeElapsed%3 == 0 ) {
                 updateTimerLabel()
+                var calculatedTime:Float = Float(NSDate.timeIntervalSinceReferenceDate() - startTime)
+                if calculatedTime > 3600 {
+                    stopTimer()
+                    resetTimer()
+                }
             }
         }
     }
     
     func updateTimerLabel() {
-        let calculatedTime:Float = Float(NSDate.timeIntervalSinceReferenceDate() - startTime)
+        var calculatedTime:Float = Float(NSDate.timeIntervalSinceReferenceDate() - startTime)
         secondsInput.text = formatSeconds(calculatedTime)
         framesInput.text = calulateFrames(calculatedTime)
     }
@@ -275,7 +289,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         enableEditing()
         enableFpsSelect()
         enableStart()
-        disableReset()
+        //disableReset()
         stoppedTime = startTime
     }
     
@@ -301,15 +315,24 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     @IBAction func fpsUpdated() {
         let prevFps = fps
         fps = (fpsInput.text as NSString).floatValue
+        if fps >= 100 {
+            fps = prevFps
+            self.fpsInput.resignFirstResponder()
+            let alertController = UIAlertController(title: "Error", message: "FPS must be less than 100.", preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }
         if fps == 0 {
             fps = prevFps
-            if fps % 1 == 0 {
-                fpsInput.text = NSString(format:"%g",fps)
-            }
-            else {
-                fpsInput.text = NSString(format:"%.2f",fps)
-            }
         }
+        if fps % 1 == 0 {
+            fpsInput.text = NSString(format:"%g",fps)
+        }
+        else {
+            fpsInput.text = NSString(format:"%.2f",fps)
+        }
+        
         //updateTimerLabel()
         
         let totalSeconds = (framesInput.text as NSString).floatValue / fps
@@ -368,6 +391,9 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         if (frames == 0) {
             framesInput.text = "0.00"
         }
+        else {
+            framesInput.text = NSString(format:"%.2f",frames)
+        }
         var secs:Float = frames / fps
         
         stoppedTime = NSDate.timeIntervalSinceReferenceDate()
@@ -382,6 +408,17 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     @IBAction func framesEditing(sender: AnyObject) {
         let frames = (framesInput.text as NSString).floatValue
         var secs:Float = frames / fps
+        
+        if secs > 3600 {
+            secs = 0
+            self.framesInput.resignFirstResponder()
+            let alertController = UIAlertController(title: "Error", message: "The number of frames you entered exceeded the maximum allowed time of 1 hour.", preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
+            //framesInput.text = "0.00"
+        }
+        
         secondsInput.text = formatSeconds(secs)
     }
     
@@ -413,12 +450,20 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
             fr = frChar.floatValue
         }
         
-        let totalSeconds = (fr/fps)+sec+(min*60)
+        var totalSeconds = (fr/fps)+sec+(min*60)
         
         println(min)
         println(sec)
         println(fr)
-
+        
+        if totalSeconds > 3600 {
+            totalSeconds = 0
+            let alertController = UIAlertController(title: "Error", message: "The time you entered exceeded the maximum allowed time of 1 hour.", preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }
+        
         secondsInput.text = formatSeconds(totalSeconds)
         framesInput.text = calulateFrames(totalSeconds)
         

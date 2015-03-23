@@ -67,7 +67,7 @@
                                 <fontDescription key="fontDescription" name="AvenirNextCondensed-Regular" family="Avenir Next Condensed" pointSize="40"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="KEY">
-                                    <color key="titleColor" red="0.3411764705882353" green="0.35686274509803922" blue="0.6588235294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.3855552398" green="0.34747373660000003" blue="0.84164268090000005" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="disabled">
@@ -75,7 +75,7 @@
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.3411764706" green="0.35686274509999999" blue="0.6588235294" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="value" red="0.3855552398" green="0.34747373660000003" blue="0.84164268092105265" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                         <real key="value" value="2"/>
@@ -241,7 +241,7 @@
                                 </variation>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="black" dataMode="prototypes" style="plain" separatorStyle="none" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ri0-Wf-oo4">
-                                <rect key="frame" x="11" y="282" width="392" height="412"/>
+                                <rect key="frame" x="-11" y="282" width="414" height="412"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="368" id="c0f-hu-LZY"/>
@@ -277,7 +277,7 @@
                                         <color key="textColor" red="0.42745098040000001" green="0.43137254899999999" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="center" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="24" textAlignment="center" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="o3u-ov-u9w" customClass="OutlineTextField" customModule="OutlinedViews">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="center" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="24" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="o3u-ov-u9w" customClass="OutlineTextField" customModule="OutlinedViews">
                                         <rect key="frame" x="38" y="5" width="50" height="42"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -581,7 +581,7 @@
                             <constraint firstItem="h3c-CT-yYP" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="39" id="eJH-mp-a3c"/>
                             <constraint firstAttribute="centerX" secondItem="oGX-1b-8aN" secondAttribute="centerX" constant="22" id="flQ-kb-g4A"/>
                             <constraint firstItem="3O6-bm-pNK" firstAttribute="top" secondItem="khK-aW-N7y" secondAttribute="bottom" constant="-7" id="ftq-BY-mLn"/>
-                            <constraint firstItem="ri0-Wf-oo4" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-5" id="g1d-rv-k1V"/>
+                            <constraint firstItem="ri0-Wf-oo4" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-27" id="g1d-rv-k1V"/>
                             <constraint firstItem="x4r-OF-ELk" firstAttribute="leading" secondItem="TAP-cr-YGj" secondAttribute="leading" id="gCa-bl-z2h"/>
                             <constraint firstAttribute="centerX" secondItem="PAs-Gk-Daa" secondAttribute="centerX" constant="80" id="ggj-tL-2EH"/>
                             <constraint firstItem="3O6-bm-pNK" firstAttribute="leading" secondItem="khK-aW-N7y" secondAttribute="trailing" constant="-45" id="i3c-W4-a82"/>
