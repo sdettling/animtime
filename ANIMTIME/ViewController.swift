@@ -158,7 +158,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     
     func startTimer() {
         timerRunning = true
-        //enableReset()
         disableEditing()
     
         if stoppedTime == startTime {
@@ -167,12 +166,9 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         }
         else {
             startTime = startTime + (NSDate.timeIntervalSinceReferenceDate() - stoppedTime)
-            println(NSDate.timeIntervalSinceReferenceDate() - stoppedTime)
-            println(startTime)
         }
         
         if !timerStarted {
-            println(startTime)
             let myTimer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: "advanceTime", userInfo: nil, repeats: true)
             NSRunLoop.currentRunLoop().addTimer(myTimer, forMode: NSRunLoopCommonModes)
             timerStarted = true
@@ -198,13 +194,10 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     func stopTimer() {
         if !hasKeys {
             enableEditing()
-            //enableFpsSelect()
         }
         updateTimerLabel()
-        //enableFpsSelect()
         
         stoppedTime = NSDate.timeIntervalSinceReferenceDate()
-        println(stoppedTime)
         
         timerRunning = false
         startToggle.setTitle("START", forState: .Normal)
@@ -247,7 +240,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         let numberOfRows = keyTable.numberOfRowsInSection(numberOfSections-1)
         
         if numberOfRows > 0 {
-            println(numberOfSections)
             let indexPath = NSIndexPath(forRow: numberOfRows-1, inSection: (numberOfSections-1))
             keyTable.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
         }
@@ -264,7 +256,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     }
     
     func calulateFrames(secondsElapsed:Float)-> String {
-        //let time:Float = Float(Float(secondsElapsed)/100)
         let framesEquivalent:Float = secondsElapsed * fps
         return NSString(format:"%.2f",framesEquivalent)
     }
@@ -289,13 +280,11 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         enableEditing()
         enableFpsSelect()
         enableStart()
-        //disableReset()
         stoppedTime = startTime
     }
     
     func convertToSeconds(timecode:String)-> Int {
         var splitTime = split(timecode) {$0 == ":"}
-        println(splitTime.count)
         if splitTime.count == 1 {
             var seconds = (secondsInput.text as NSString).floatValue
             return Int(seconds * 100)
@@ -333,17 +322,12 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
             fpsInput.text = NSString(format:"%.2f",fps)
         }
         
-        //updateTimerLabel()
-        
         let totalSeconds = (framesInput.text as NSString).floatValue / fps
         
         stoppedTime = NSDate.timeIntervalSinceReferenceDate()
         startTime = stoppedTime - NSTimeInterval(totalSeconds)
         
-        println(startTime)
-        
         secondsInput.text = formatSeconds(totalSeconds)
-        //framesInput.text = calulateFrames(totalSeconds)
         
         enableStart()
     }
@@ -364,7 +348,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
             disableEditing()
             disableFpsSelect()
         }
-        println(NSDate.timeIntervalSinceReferenceDate() - startTime)
         let timediff:Float = Float(NSDate.timeIntervalSinceReferenceDate() - startTime)
         
         keys.append(timediff)
@@ -374,16 +357,10 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     @IBAction func resetGesture(sender: AnyObject) {
         if sender.state == UIGestureRecognizerState.Began
         {
-            //keys = []
             keys.removeAll()
             updateKeysList()
             hasKeys = false
             resetTimer()
-            println("start")
-        }
-        if sender.state == UIGestureRecognizerState.Ended
-        {
-            println("end")
         }
     }
     @IBAction func framesUpdated() {
@@ -398,11 +375,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         
         stoppedTime = NSDate.timeIntervalSinceReferenceDate()
         startTime = stoppedTime - NSTimeInterval(secs)
-        
-        ///// set timer to start at entered time
-        
-        //var secs:Float = frames / fps
-        //timeElapsed = secs
+
         enableStart()
     }
     @IBAction func framesEditing(sender: AnyObject) {
@@ -416,7 +389,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
             alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
             
             self.presentViewController(alertController, animated: true, completion: nil)
-            //framesInput.text = "0.00"
         }
         
         secondsInput.text = formatSeconds(secs)
@@ -452,10 +424,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         
         var totalSeconds = (fr/fps)+sec+(min*60)
         
-        println(min)
-        println(sec)
-        println(fr)
-        
         if totalSeconds > 3600 {
             totalSeconds = 0
             let alertController = UIAlertController(title: "Error", message: "The time you entered exceeded the maximum allowed time of 1 hour.", preferredStyle: UIAlertControllerStyle.Alert)
@@ -470,21 +438,11 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         
         stoppedTime = NSDate.timeIntervalSinceReferenceDate()
         startTime = stoppedTime - NSTimeInterval(totalSeconds)
-        
-        //update frames accordingly
-        
-        
-        //let seconds = convertToSeconds(secondsInput.text)
-        
-        ///// set timer to start at entered time
-        
-        //timeElapsed = (seconds)
-        //secondsInput.text = formatSeconds(seconds)
+
         enableStart()
     }
     
     @IBAction func secondsEditing(sender: AnyObject) {
-        //let secondsValue = (secondsInput.text as NSString).integerValue
         var secondsText = secondsInput.text as NSString
         var timeNumbers = secondsText.stringByReplacingOccurrencesOfString(":", withString: "") as NSString
         
@@ -518,8 +476,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         var calculatedframes:Float = 0
         
         calculatedframes = (Float(minutes * 60) * fps) + (Float(seconds) * fps) + Float(frames)
-        
-        println(calculatedframes)
+
     }
     
     func convertToTimecode(time:Float)->String {
@@ -533,12 +490,15 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     
     func prepareTextForShare()->String {
         var textBody:String = ""
-        for key in keys {
+        for (index, key) in enumerate(keys) {
+            textBody = textBody + String(index+1)
+            textBody = textBody + " - "
             textBody = textBody + formatSeconds(key)
             textBody = textBody + "     "
             textBody = textBody + calulateFrames(key)
             textBody = textBody + "\n"
         }
+        
         return textBody
     }
     
