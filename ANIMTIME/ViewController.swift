@@ -28,6 +28,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     let redC : UIColor = UIColor(red: 237/255, green: 28/255, blue: 36/255, alpha: 1.0)
     let keysBorderC : UIColor = UIColor(red: 147/255, green: 149/255, blue: 152/255, alpha: 1.0)
     let keysGrayC : UIColor = UIColor(red: 65/255, green: 64/255, blue: 66/255, alpha: 1.0)
+    let outlinesGrayC : UIColor = UIColor(red: 89/255, green: 90/255, blue: 93/255, alpha: 1.0)
     let whiteText : UIColor = UIColor(red: 241/255, green: 242/255, blue: 242/255, alpha: 1.0)
     let grayC : UIColor = UIColor.grayColor()
     let disabledGrayC : UIColor = UIColor.darkGrayColor()
@@ -35,6 +36,9 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     @IBOutlet var resetHoldLabel: UILabel!
     @IBOutlet var resetDot: UIView!
     @IBOutlet var startDot: UIView!
+    @IBOutlet var dot1: UIView!
+    @IBOutlet var dot2: UIView!
+    @IBOutlet var dot3: UIView!
     
     @IBOutlet weak var startToggle: UIButton!
     @IBOutlet weak var resetButton: UIButton!
@@ -46,6 +50,10 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     
     @IBOutlet var keyTable: UITableView!
     
+    @IBOutlet var fpsOutline: UIView!
+    @IBOutlet var timeOutline: UIView!
+    @IBOutlet var framesOutline: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.fpsInput.delegate = self
@@ -56,6 +64,35 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         self.keyTable.rowHeight = 40
         self.keyTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         self.addDoneButtonOnKeyboard()
+        
+        //Add outlines to elements
+        fpsOutline.layer.borderColor = outlinesGrayC.CGColor
+        fpsOutline.layer.borderWidth = 2
+        fpsOutline.layer.cornerRadius = 6
+        timeOutline.layer.borderColor = outlinesGrayC.CGColor
+        timeOutline.layer.borderWidth = 2
+        timeOutline.layer.cornerRadius = 6
+        framesOutline.layer.borderColor = outlinesGrayC.CGColor
+        framesOutline.layer.borderWidth = 2
+        framesOutline.layer.cornerRadius = 6
+        
+        startToggle.layer.borderColor = greenC.CGColor
+        startToggle.layer.borderWidth = 2
+        startToggle.layer.cornerRadius = 6
+        
+        resetButton.layer.borderColor = yellowC.CGColor
+        resetButton.layer.borderWidth = 2
+        resetButton.layer.cornerRadius = 6
+        
+        keyButton.layer.borderColor = blueC.CGColor
+        keyButton.layer.borderWidth = 2
+        keyButton.layer.cornerRadius = 6
+        
+        resetDot.layer.cornerRadius = 6
+        startDot.layer.cornerRadius = 6
+        dot1.layer.cornerRadius = 6
+        dot2.layer.cornerRadius = 6
+        dot3.layer.cornerRadius = 6
     }
     
     override func didReceiveMemoryWarning() {
@@ -76,7 +113,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         items.addObject(flexSpace)
         items.addObject(done)
         
-        doneToolbar.items = items
+        doneToolbar.items = items as [AnyObject]
         doneToolbar.sizeToFit()
         
         self.fpsInput.inputAccessoryView = doneToolbar
@@ -92,7 +129,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         self.framesInput.resignFirstResponder()
     }
     
-    func textFieldShouldReturn(textField: UITextField!) -> Bool {
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.view.endEditing(true);
         return false;
     }
@@ -104,7 +141,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell:UITableViewCell = keyTable.dequeueReusableCellWithIdentifier("cell") as UITableViewCell
+        var cell:UITableViewCell = keyTable.dequeueReusableCellWithIdentifier("cell") as! UITableViewCell
         cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
         cell.contentView.backgroundColor = keysGrayC
         cell.textLabel?.textColor = whiteText
@@ -257,7 +294,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     
     func calulateFrames(secondsElapsed:Float)-> String {
         let framesEquivalent:Float = secondsElapsed * fps
-        return NSString(format:"%.2f",framesEquivalent)
+        return NSString(format:"%.2f",framesEquivalent) as String
     }
     
     func formatSeconds(secondsElapsed:Float)-> String {
@@ -316,10 +353,10 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
             fps = prevFps
         }
         if fps % 1 == 0 {
-            fpsInput.text = NSString(format:"%g",fps)
+            fpsInput.text = NSString(format:"%g",fps) as String
         }
         else {
-            fpsInput.text = NSString(format:"%.2f",fps)
+            fpsInput.text = NSString(format:"%.2f",fps) as String
         }
         
         let totalSeconds = (framesInput.text as NSString).floatValue / fps
@@ -369,7 +406,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
             framesInput.text = "0.00"
         }
         else {
-            framesInput.text = NSString(format:"%.2f",frames)
+            framesInput.text = NSString(format:"%.2f",frames) as String
         }
         var secs:Float = frames / fps
         
@@ -450,14 +487,14 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         
         if chars < 3 {
             secondsText = timeNumbers
-            secondsInput.text = secondsText
+            secondsInput.text = secondsText as String
         }
         else if chars > 2 && chars < 5 {
             let rangeL = chars - 2
             let secChar = timeNumbers.substringWithRange(NSRange(location: 0, length: rangeL))
             let frChar = timeNumbers.substringWithRange(NSRange(location: rangeL, length: 2))
             secondsText = secChar+":"+frChar
-            secondsInput.text = secondsText
+            secondsInput.text = secondsText as String
         }
         else if chars > 4 && chars < 7 {
             let rangeL = chars - 4
@@ -465,7 +502,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
             let secChar = timeNumbers.substringWithRange(NSRange(location: rangeL, length: 2))
             let frChar = timeNumbers.substringWithRange(NSRange(location: rangeL+2, length: 2))
             secondsText = minChar+":"+secChar+":"+frChar
-            secondsInput.text = secondsText
+            secondsInput.text = secondsText as String
             if chars == 6 {
                 self.secondsInput.resignFirstResponder()
             }

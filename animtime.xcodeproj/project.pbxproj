@@ -16,8 +16,6 @@
 		A0454C981A817B0E004FB0C3 /* OutlinedViews.h in Headers */ = {isa = PBXBuildFile; fileRef = A0454C971A817B0E004FB0C3 /* OutlinedViews.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A0454C9E1A817B0E004FB0C3 /* OutlinedViews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0454C931A817B0E004FB0C3 /* OutlinedViews.framework */; };
 		A0454CA71A817B0E004FB0C3 /* OutlinedViewsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0454CA61A817B0E004FB0C3 /* OutlinedViewsTests.swift */; };
-		A0454CAA1A817B0E004FB0C3 /* OutlinedViews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0454C931A817B0E004FB0C3 /* OutlinedViews.framework */; };
-		A0454CAB1A817B0E004FB0C3 /* OutlinedViews.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A0454C931A817B0E004FB0C3 /* OutlinedViews.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A0454CB41A817B34004FB0C3 /* Outlines.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0454CB31A817B34004FB0C3 /* Outlines.swift */; };
 		A082964D1A87C3C300DB1DE4 /* EmailComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A082964C1A87C3C300DB1DE4 /* EmailComposer.swift */; };
 		A082964F1A87C6AE00DB1DE4 /* MessageComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A082964E1A87C6AE00DB1DE4 /* MessageComposer.swift */; };
@@ -45,28 +43,7 @@
 			remoteGlobalIDString = A0454C681A817843004FB0C3;
 			remoteInfo = ANIMTIME;
 		};
-		A0454CA81A817B0E004FB0C3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A0454C611A817843004FB0C3 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A0454C921A817B0E004FB0C3;
-			remoteInfo = OutlinedViews;
-		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		A0454CAF1A817B0E004FB0C3 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				A0454CAB1A817B0E004FB0C3 /* OutlinedViews.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		A0454C691A817843004FB0C3 /* animtime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = animtime.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,7 +72,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A0454CAA1A817B0E004FB0C3 /* OutlinedViews.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,12 +218,10 @@
 				A0454C651A817843004FB0C3 /* Sources */,
 				A0454C661A817843004FB0C3 /* Frameworks */,
 				A0454C671A817843004FB0C3 /* Resources */,
-				A0454CAF1A817B0E004FB0C3 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				A0454CA91A817B0E004FB0C3 /* PBXTargetDependency */,
 			);
 			name = animtime;
 			productName = ANIMTIME;
@@ -444,11 +418,6 @@
 			target = A0454C681A817843004FB0C3 /* animtime */;
 			targetProxy = A0454CA11A817B0E004FB0C3 /* PBXContainerItemProxy */;
 		};
-		A0454CA91A817B0E004FB0C3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A0454C921A817B0E004FB0C3 /* OutlinedViews */;
-			targetProxy = A0454CA81A817B0E004FB0C3 /* PBXContainerItemProxy */;
-		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -556,9 +525,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = ANIMTIME/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = animtime;
 			};
@@ -568,9 +538,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = ANIMTIME/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = animtime;
 			};

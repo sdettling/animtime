@@ -16,3 +16,5 @@ Features:
 
 Designed by John Paul Lavin.
 Developed by Stephen Dettling.
+
+View in the App Store https://itunes.apple.com/us/app/animtime/id963590054

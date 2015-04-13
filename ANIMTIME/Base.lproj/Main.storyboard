@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -649,8 +650,13 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
+                        <outlet property="dot1" destination="Pbu-ci-jL0" id="62H-b5-o1J"/>
+                        <outlet property="dot2" destination="xgW-m1-Kmf" id="uBt-Fg-a2U"/>
+                        <outlet property="dot3" destination="3O6-bm-pNK" id="MOB-I0-5eq"/>
                         <outlet property="fpsInput" destination="o3u-ov-u9w" id="rhV-CI-FJn"/>
+                        <outlet property="fpsOutline" destination="khK-aW-N7y" id="PAX-4Z-aYc"/>
                         <outlet property="framesInput" destination="YR7-Qa-H1j" id="qol-qv-Lo9"/>
+                        <outlet property="framesOutline" destination="tVR-ao-H4F" id="GcP-q3-4gd"/>
                         <outlet property="keyButton" destination="R7B-tp-Gkf" id="soD-ZM-evy"/>
                         <outlet property="keyTable" destination="ri0-Wf-oo4" id="AEA-pg-nlQ"/>
                         <outlet property="resetButton" destination="TAP-cr-YGj" id="Jpk-OH-9J4"/>
@@ -659,6 +665,7 @@
                         <outlet property="secondsInput" destination="cIP-LU-joc" id="FoL-O3-8go"/>
                         <outlet property="startDot" destination="Zfe-xe-l24" id="ysq-hf-aGJ"/>
                         <outlet property="startToggle" destination="PAs-Gk-Daa" id="wB8-HE-wfD"/>
+                        <outlet property="timeOutline" destination="oGX-1b-8aN" id="Ps2-V7-tUP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
