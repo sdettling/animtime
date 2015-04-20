@@ -13,30 +13,12 @@
 		A0454C761A817843004FB0C3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0454C751A817843004FB0C3 /* Images.xcassets */; };
 		A0454C791A817843004FB0C3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0454C771A817843004FB0C3 /* LaunchScreen.xib */; };
 		A0454C851A817843004FB0C3 /* ANIMTIMETests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0454C841A817843004FB0C3 /* ANIMTIMETests.swift */; };
-		A0454C981A817B0E004FB0C3 /* OutlinedViews.h in Headers */ = {isa = PBXBuildFile; fileRef = A0454C971A817B0E004FB0C3 /* OutlinedViews.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A0454C9E1A817B0E004FB0C3 /* OutlinedViews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0454C931A817B0E004FB0C3 /* OutlinedViews.framework */; };
-		A0454CA71A817B0E004FB0C3 /* OutlinedViewsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0454CA61A817B0E004FB0C3 /* OutlinedViewsTests.swift */; };
-		A0454CB41A817B34004FB0C3 /* Outlines.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0454CB31A817B34004FB0C3 /* Outlines.swift */; };
 		A082964D1A87C3C300DB1DE4 /* EmailComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A082964C1A87C3C300DB1DE4 /* EmailComposer.swift */; };
 		A082964F1A87C6AE00DB1DE4 /* MessageComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A082964E1A87C6AE00DB1DE4 /* MessageComposer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		A0454C7F1A817843004FB0C3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A0454C611A817843004FB0C3 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A0454C681A817843004FB0C3;
-			remoteInfo = ANIMTIME;
-		};
-		A0454C9F1A817B0E004FB0C3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A0454C611A817843004FB0C3 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A0454C921A817B0E004FB0C3;
-			remoteInfo = OutlinedViews;
-		};
-		A0454CA11A817B0E004FB0C3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A0454C611A817843004FB0C3 /* Project object */;
 			proxyType = 1;
@@ -56,13 +38,6 @@
 		A0454C7E1A817843004FB0C3 /* animtimeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = animtimeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0454C831A817843004FB0C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A0454C841A817843004FB0C3 /* ANIMTIMETests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ANIMTIMETests.swift; sourceTree = "<group>"; };
-		A0454C931A817B0E004FB0C3 /* OutlinedViews.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OutlinedViews.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A0454C961A817B0E004FB0C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A0454C971A817B0E004FB0C3 /* OutlinedViews.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OutlinedViews.h; sourceTree = "<group>"; };
-		A0454C9D1A817B0E004FB0C3 /* OutlinedViewsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OutlinedViewsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A0454CA51A817B0E004FB0C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A0454CA61A817B0E004FB0C3 /* OutlinedViewsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlinedViewsTests.swift; sourceTree = "<group>"; };
-		A0454CB31A817B34004FB0C3 /* Outlines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Outlines.swift; sourceTree = "<group>"; };
 		A082964C1A87C3C300DB1DE4 /* EmailComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailComposer.swift; sourceTree = "<group>"; };
 		A082964E1A87C6AE00DB1DE4 /* MessageComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageComposer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -82,21 +57,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A0454C8F1A817B0E004FB0C3 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A0454C9A1A817B0E004FB0C3 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A0454C9E1A817B0E004FB0C3 /* OutlinedViews.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -105,8 +65,6 @@
 			children = (
 				A0454C6B1A817843004FB0C3 /* ANIMTIME */,
 				A0454C811A817843004FB0C3 /* ANIMTIMETests */,
-				A0454C941A817B0E004FB0C3 /* OutlinedViews */,
-				A0454CA31A817B0E004FB0C3 /* OutlinedViewsTests */,
 				A0454C6A1A817843004FB0C3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -116,8 +74,6 @@
 			children = (
 				A0454C691A817843004FB0C3 /* animtime.app */,
 				A0454C7E1A817843004FB0C3 /* animtimeTests.xctest */,
-				A0454C931A817B0E004FB0C3 /* OutlinedViews.framework */,
-				A0454C9D1A817B0E004FB0C3 /* OutlinedViewsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -162,53 +118,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		A0454C941A817B0E004FB0C3 /* OutlinedViews */ = {
-			isa = PBXGroup;
-			children = (
-				A0454C971A817B0E004FB0C3 /* OutlinedViews.h */,
-				A0454C951A817B0E004FB0C3 /* Supporting Files */,
-				A0454CB31A817B34004FB0C3 /* Outlines.swift */,
-			);
-			path = OutlinedViews;
-			sourceTree = "<group>";
-		};
-		A0454C951A817B0E004FB0C3 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				A0454C961A817B0E004FB0C3 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		A0454CA31A817B0E004FB0C3 /* OutlinedViewsTests */ = {
-			isa = PBXGroup;
-			children = (
-				A0454CA61A817B0E004FB0C3 /* OutlinedViewsTests.swift */,
-				A0454CA41A817B0E004FB0C3 /* Supporting Files */,
-			);
-			path = OutlinedViewsTests;
-			sourceTree = "<group>";
-		};
-		A0454CA41A817B0E004FB0C3 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				A0454CA51A817B0E004FB0C3 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
-
-/* Begin PBXHeadersBuildPhase section */
-		A0454C901A817B0E004FB0C3 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A0454C981A817B0E004FB0C3 /* OutlinedViews.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		A0454C681A817843004FB0C3 /* animtime */ = {
@@ -246,43 +156,6 @@
 			productReference = A0454C7E1A817843004FB0C3 /* animtimeTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		A0454C921A817B0E004FB0C3 /* OutlinedViews */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A0454CAC1A817B0E004FB0C3 /* Build configuration list for PBXNativeTarget "OutlinedViews" */;
-			buildPhases = (
-				A0454C8E1A817B0E004FB0C3 /* Sources */,
-				A0454C8F1A817B0E004FB0C3 /* Frameworks */,
-				A0454C901A817B0E004FB0C3 /* Headers */,
-				A0454C911A817B0E004FB0C3 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = OutlinedViews;
-			productName = OutlinedViews;
-			productReference = A0454C931A817B0E004FB0C3 /* OutlinedViews.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		A0454C9C1A817B0E004FB0C3 /* OutlinedViewsTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A0454CB01A817B0E004FB0C3 /* Build configuration list for PBXNativeTarget "OutlinedViewsTests" */;
-			buildPhases = (
-				A0454C991A817B0E004FB0C3 /* Sources */,
-				A0454C9A1A817B0E004FB0C3 /* Frameworks */,
-				A0454C9B1A817B0E004FB0C3 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A0454CA01A817B0E004FB0C3 /* PBXTargetDependency */,
-				A0454CA21A817B0E004FB0C3 /* PBXTargetDependency */,
-			);
-			name = OutlinedViewsTests;
-			productName = OutlinedViewsTests;
-			productReference = A0454C9D1A817B0E004FB0C3 /* OutlinedViewsTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -297,13 +170,6 @@
 						DevelopmentTeam = S546X4KY9J;
 					};
 					A0454C7D1A817843004FB0C3 = {
-						CreatedOnToolsVersion = 6.1.1;
-						TestTargetID = A0454C681A817843004FB0C3;
-					};
-					A0454C921A817B0E004FB0C3 = {
-						CreatedOnToolsVersion = 6.1.1;
-					};
-					A0454C9C1A817B0E004FB0C3 = {
 						CreatedOnToolsVersion = 6.1.1;
 						TestTargetID = A0454C681A817843004FB0C3;
 					};
@@ -324,8 +190,6 @@
 			targets = (
 				A0454C681A817843004FB0C3 /* animtime */,
 				A0454C7D1A817843004FB0C3 /* animtimeTests */,
-				A0454C921A817B0E004FB0C3 /* OutlinedViews */,
-				A0454C9C1A817B0E004FB0C3 /* OutlinedViewsTests */,
 			);
 		};
 /* End PBXProject section */
@@ -342,20 +206,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A0454C7C1A817843004FB0C3 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A0454C911A817B0E004FB0C3 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A0454C9B1A817B0E004FB0C3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -384,22 +234,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A0454C8E1A817B0E004FB0C3 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A0454CB41A817B34004FB0C3 /* Outlines.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A0454C991A817B0E004FB0C3 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A0454CA71A817B0E004FB0C3 /* OutlinedViewsTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -407,16 +241,6 @@
 			isa = PBXTargetDependency;
 			target = A0454C681A817843004FB0C3 /* animtime */;
 			targetProxy = A0454C7F1A817843004FB0C3 /* PBXContainerItemProxy */;
-		};
-		A0454CA01A817B0E004FB0C3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A0454C921A817B0E004FB0C3 /* OutlinedViews */;
-			targetProxy = A0454C9F1A817B0E004FB0C3 /* PBXContainerItemProxy */;
-		};
-		A0454CA21A817B0E004FB0C3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A0454C681A817843004FB0C3 /* animtime */;
-			targetProxy = A0454CA11A817B0E004FB0C3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -581,81 +405,6 @@
 			};
 			name = Release;
 		};
-		A0454CAD1A817B0E004FB0C3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = OutlinedViews/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		A0454CAE1A817B0E004FB0C3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = OutlinedViews/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		A0454CB11A817B0E004FB0C3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = OutlinedViewsTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ANIMTIME.app/ANIMTIME";
-			};
-			name = Debug;
-		};
-		A0454CB21A817B0E004FB0C3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = OutlinedViewsTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ANIMTIME.app/ANIMTIME";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -682,24 +431,6 @@
 			buildConfigurations = (
 				A0454C8C1A817843004FB0C3 /* Debug */,
 				A0454C8D1A817843004FB0C3 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A0454CAC1A817B0E004FB0C3 /* Build configuration list for PBXNativeTarget "OutlinedViews" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A0454CAD1A817B0E004FB0C3 /* Debug */,
-				A0454CAE1A817B0E004FB0C3 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A0454CB01A817B0E004FB0C3 /* Build configuration list for PBXNativeTarget "OutlinedViewsTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A0454CB11A817B0E004FB0C3 /* Debug */,
-				A0454CB21A817B0E004FB0C3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
