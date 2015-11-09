@@ -103,17 +103,17 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     
     func addDoneButtonOnKeyboard()
     {
-        var doneToolbar: UIToolbar = UIToolbar(frame: CGRectMake(0, 0, 320, 50))
+        let doneToolbar: UIToolbar = UIToolbar(frame: CGRectMake(0, 0, 320, 50))
         doneToolbar.barStyle = UIBarStyle.BlackTranslucent
         
-        var flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
-        var done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Done, target: self, action: Selector("doneButtonAction"))
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Done, target: self, action: Selector("doneButtonAction"))
         
-        var items = NSMutableArray()
+        let items = NSMutableArray()
         items.addObject(flexSpace)
         items.addObject(done)
         
-        doneToolbar.items = items as [AnyObject]
+        doneToolbar.items = items as [AnyObject] as? [UIBarButtonItem]
         doneToolbar.sizeToFit()
         
         self.fpsInput.inputAccessoryView = doneToolbar
@@ -141,15 +141,14 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell:UITableViewCell = keyTable.dequeueReusableCellWithIdentifier("cell") as! UITableViewCell
+        var cell:UITableViewCell = (keyTable.dequeueReusableCellWithIdentifier("cell")! as UITableViewCell)
         cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
         cell.contentView.backgroundColor = keysGrayC
         cell.textLabel?.textColor = whiteText
         cell.detailTextLabel?.textColor = whiteText
         cell.textLabel?.font = UIFont(name: "AvenirNextCondensed-Regular", size: 24)
         cell.detailTextLabel?.font = UIFont(name: "AvenirNextCondensed-Regular", size: 24)
-        var timeSinceLast = 0
-        var keyNum = indexPath.row + 1
+        let keyNum = indexPath.row + 1
         var strKeyNum = String(keyNum)
         if keyNum < 10 {
             strKeyNum = "\u{2000}\u{2000}" + String(keyNum)
@@ -256,7 +255,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
             timeElapsed += 1
             if ( timeElapsed%3 == 0 ) {
                 updateTimerLabel()
-                var calculatedTime:Float = Float(NSDate.timeIntervalSinceReferenceDate() - startTime)
+                let calculatedTime:Float = Float(NSDate.timeIntervalSinceReferenceDate() - startTime)
                 if calculatedTime > 3600 {
                     stopTimer()
                     resetTimer()
@@ -266,14 +265,14 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     }
     
     func updateTimerLabel() {
-        var calculatedTime:Float = Float(NSDate.timeIntervalSinceReferenceDate() - startTime)
+        let calculatedTime:Float = Float(NSDate.timeIntervalSinceReferenceDate() - startTime)
         secondsInput.text = formatSeconds(calculatedTime)
         framesInput.text = calulateFrames(calculatedTime)
     }
     
     func updateKeysList() {
         self.keyTable.reloadData()
-        let numberOfSections = keyTable.numberOfSections()
+        let numberOfSections = keyTable.numberOfSections
         let numberOfRows = keyTable.numberOfRowsInSection(numberOfSections-1)
         
         if numberOfRows > 0 {
@@ -321,15 +320,15 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     }
     
     func convertToSeconds(timecode:String)-> Int {
-        var splitTime = split(timecode) {$0 == ":"}
+        var splitTime = timecode.characters.split {$0 == ":"}.map { String($0) }
         if splitTime.count == 1 {
-            var seconds = (secondsInput.text as NSString).floatValue
+            let seconds = (secondsInput.text! as NSString).floatValue
             return Int(seconds * 100)
         }
         else if splitTime.count == 2 {
-            var seconds: Float = (splitTime[1] as NSString).floatValue
-            var minutes: Float = (splitTime[0] as NSString).floatValue
-            var totalSeconds = minutes * 60 + seconds
+            let seconds: Float = (splitTime[1] as NSString).floatValue
+            let minutes: Float = (splitTime[0] as NSString).floatValue
+            let totalSeconds = minutes * 60 + seconds
             return Int(totalSeconds * 100)
         }
         else
@@ -340,14 +339,17 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     
     @IBAction func fpsUpdated() {
         let prevFps = fps
-        fps = (fpsInput.text as NSString).floatValue
+        fps = (fpsInput.text! as NSString).floatValue
         if fps >= 100 {
             fps = prevFps
             self.fpsInput.resignFirstResponder()
-            let alertController = UIAlertController(title: "Error", message: "FPS must be less than 100.", preferredStyle: UIAlertControllerStyle.Alert)
-            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
-            
-            self.presentViewController(alertController, animated: true, completion: nil)
+            if #available(iOS 8.0, *) {
+                let alertController = UIAlertController(title: "Error", message: "FPS must be less than 100.", preferredStyle: UIAlertControllerStyle.Alert)
+                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                self.presentViewController(alertController, animated: true, completion: nil)
+            } else {
+                // Fallback on earlier versions
+            }
         }
         if fps == 0 {
             fps = prevFps
@@ -359,7 +361,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
             fpsInput.text = NSString(format:"%.2f",fps) as String
         }
         
-        let totalSeconds = (framesInput.text as NSString).floatValue / fps
+        let totalSeconds = (framesInput.text! as NSString).floatValue / fps
         
         stoppedTime = NSDate.timeIntervalSinceReferenceDate()
         startTime = stoppedTime - NSTimeInterval(totalSeconds)
@@ -401,14 +403,14 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         }
     }
     @IBAction func framesUpdated() {
-        let frames = (framesInput.text as NSString).floatValue
+        let frames = (framesInput.text! as NSString).floatValue
         if (frames == 0) {
             framesInput.text = "0.00"
         }
         else {
             framesInput.text = NSString(format:"%.2f",frames) as String
         }
-        var secs:Float = frames / fps
+        let secs:Float = frames / fps
         
         stoppedTime = NSDate.timeIntervalSinceReferenceDate()
         startTime = stoppedTime - NSTimeInterval(secs)
@@ -416,25 +418,26 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         enableStart()
     }
     @IBAction func framesEditing(sender: AnyObject) {
-        let frames = (framesInput.text as NSString).floatValue
+        let frames = (framesInput.text! as NSString).floatValue
         var secs:Float = frames / fps
         
         if secs > 3600 {
             secs = 0
             self.framesInput.resignFirstResponder()
-            let alertController = UIAlertController(title: "Error", message: "The number of frames you entered exceeded the maximum allowed time of 1 hour.", preferredStyle: UIAlertControllerStyle.Alert)
-            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
-            
-            self.presentViewController(alertController, animated: true, completion: nil)
+            if #available(iOS 8.0, *) {
+                let alertController = UIAlertController(title: "Error", message: "The number of frames you entered exceeded the maximum allowed time of 1 hour.", preferredStyle: UIAlertControllerStyle.Alert)
+                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                self.presentViewController(alertController, animated: true, completion: nil)
+            } else {
+                // Fallback on earlier versions
+            }
         }
-        
         secondsInput.text = formatSeconds(secs)
     }
     
     @IBAction func secondsUpdated() {
-        var secondsText = secondsInput.text as NSString
-        var timeNumbers = secondsText.stringByReplacingOccurrencesOfString(":", withString: "") as NSString
-        var timeInt = timeNumbers.integerValue
+        let secondsText = secondsInput.text! as NSString
+        let timeNumbers = secondsText.stringByReplacingOccurrencesOfString(":", withString: "") as NSString
         let chars:Int = timeNumbers.length
         var min:Float = 0
         var sec:Float = 0
@@ -463,10 +466,13 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         
         if totalSeconds > 3600 {
             totalSeconds = 0
-            let alertController = UIAlertController(title: "Error", message: "The time you entered exceeded the maximum allowed time of 1 hour.", preferredStyle: UIAlertControllerStyle.Alert)
-            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
-            
-            self.presentViewController(alertController, animated: true, completion: nil)
+            if #available(iOS 8.0, *) {
+                let alertController = UIAlertController(title: "Error", message: "The time you entered exceeded the maximum allowed time of 1 hour.", preferredStyle: UIAlertControllerStyle.Alert)
+                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                self.presentViewController(alertController, animated: true, completion: nil)
+            } else {
+                // Fallback on earlier versions
+            }
         }
         
         secondsInput.text = formatSeconds(totalSeconds)
@@ -480,8 +486,8 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     }
     
     @IBAction func secondsEditing(sender: AnyObject) {
-        var secondsText = secondsInput.text as NSString
-        var timeNumbers = secondsText.stringByReplacingOccurrencesOfString(":", withString: "") as NSString
+        var secondsText = secondsInput.text! as NSString
+        let timeNumbers = secondsText.stringByReplacingOccurrencesOfString(":", withString: "") as NSString
         
         let chars:Int = timeNumbers.length
         
@@ -509,13 +515,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         }
     }
     
-    func convertToFrames(minutes:Int, seconds:Int, frames:Int) {
-        var calculatedframes:Float = 0
-        
-        calculatedframes = (Float(minutes * 60) * fps) + (Float(seconds) * fps) + Float(frames)
-
-    }
-    
     func convertToTimecode(time:Float)->String {
         let minutes = UInt32(time / 60)
         let seconds = UInt32(UInt32(time) - minutes * 60)
@@ -527,7 +526,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     
     func prepareTextForShare()->String {
         var textBody:String = ""
-        for (index, key) in enumerate(keys) {
+        for (index, key) in keys.enumerate() {
             textBody = textBody + String(index+1)
             textBody = textBody + " - "
             textBody = textBody + formatSeconds(key)
